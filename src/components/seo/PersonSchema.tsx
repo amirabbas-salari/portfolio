@@ -1,36 +1,43 @@
-import { profile } from "@/data/profile";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
 
-export default function PersonSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
+  name: "Amir Abbas Salari Nasab",
 
-    name: profile.name,
+  alternateName: [
+    "Amir Abbas Salari",
+    "Amirabbas Salari Nasab",
+    "Amirabbas Salari",
+    "امیر عباس سالاری نسب",
+    "امیرعباس سالاری نسب",
+    "امیر عباس سالاری",
+    "امیرعباس سالاری",
+  ],
 
-    jobTitle: profile.role,
+  jobTitle: "Full-Stack Developer",
 
-    email: `mailto:${profile.email}`,
+  url: "https://amirabbassalari.ir",
 
-    telephone: profile.phone,
+  image:
+    "https://amirabbassalari.ir/images/profile/profile.jpg",
 
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Kerman",
-      addressCountry: "IR",
-    },
+  description:
+    "Amir Abbas Salari Nasab is a Full-Stack Developer focused on Backend Development with Python, Django, Django REST Framework, and React.",
 
-    sameAs: [
-      profile.linkedin,
-      ...(profile.github ? [profile.github] : []),
-    ],
-  };
+  sameAs: [
+    "https://linkedin.com/in/amirabbas-salari",
+    "https://github.com/amirabbas-salari",
+  ],
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(schema),
-      }}
-    />
-  );
-}
+  knowsAbout: [
+    "Python",
+    "Django",
+    "Django REST Framework",
+    "React",
+    "PostgreSQL",
+    "REST API",
+    "Backend Development",
+    "Full-Stack Development",
+    "Internet of Things",
+  ],
+};

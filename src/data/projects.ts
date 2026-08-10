@@ -37,7 +37,7 @@ export const projects: Project[] = [
     ],
 
     liveUrl:
-      "https://jmovie.amirabbassalarinasab.workers.dev",
+      "https://amirabbassalari.ir",
 
     githubUrl: "",
 

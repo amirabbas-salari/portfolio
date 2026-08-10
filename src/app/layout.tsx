@@ -11,23 +11,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Amir Abbas Salari Nasab | Full-Stack Developer",
-    template: "%s | Amir Abbas Salari Nasab",
-  },
+    title:
+    "Amir Abbas Salari Nasab | امیر عباس سالاری نسب | Full-Stack Developer",
 
   description:
-    "Portfolio of Amir Abbas Salari Nasab, a Full-Stack Developer focused on backend development with Python, Django, Django REST Framework, and React.",
+    "Amir Abbas Salari Nasab (امیر عباس سالاری نسب) is a Full-Stack Developer focused on Backend Development with Python, Django, Django REST Framework, and React.",
 
   keywords: [
     "Amir Abbas Salari Nasab",
+    "Amir Abbas Salari",
+    "Amirabbas Salari Nasab",
+    "Amirabbas Salari",
+    "امیر عباس سالاری نسب",
+    "امیرعباس سالاری نسب",
+    "امیر عباس سالاری",
+    "امیرعباس سالاری",
     "Full-Stack Developer",
     "Backend Developer",
     "Python Developer",
     "Django Developer",
-    "Django REST Framework",
     "React Developer",
-    "Software Engineer",
   ],
 
   authors: [
@@ -44,6 +47,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
+    url: "https://amirabbassalari.ir",
     locale: "en_US",
     title: "Amir Abbas Salari Nasab | Full-Stack Developer",
     description:
