@@ -1,43 +1,67 @@
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
+import Script from "next/script";
 
-  name: "Amir Abbas Salari Nasab",
+export default function PersonSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
 
-  alternateName: [
-    "Amir Abbas Salari",
-    "Amirabbas Salari Nasab",
-    "Amirabbas Salari",
-    "امیر عباس سالاری نسب",
-    "امیرعباس سالاری نسب",
-    "امیر عباس سالاری",
-    "امیرعباس سالاری",
-  ],
+    name: "Amir Abbas Salari Nasab",
 
-  jobTitle: "Full-Stack Developer",
+    alternateName: [
+      "Amir Abbas Salari",
+      "Amirabbas Salari Nasab",
+      "Amirabbas Salari",
+      "امیر عباس سالاری نسب",
+      "امیرعباس سالاری نسب",
+      "امیر عباس سالاری",
+      "امیرعباس سالاری",
+    ],
 
-  url: "https://amirabbassalari.ir",
+    url: "https://amirabbassalari.ir",
 
-  image:
-    "https://amirabbassalari.ir/images/profile/profile.jpg",
+    image:
+      "https://amirabbassalari.ir/images/profile/profile.jpg",
 
-  description:
-    "Amir Abbas Salari Nasab is a Full-Stack Developer focused on Backend Development with Python, Django, Django REST Framework, and React.",
+    jobTitle: "Full-Stack Developer",
 
-  sameAs: [
-    "https://linkedin.com/in/amirabbas-salari",
-    "https://github.com/amirabbas-salari",
-  ],
+    description:
+      "Full-Stack Developer focused on Backend Development with Python, Django, Django REST Framework, and React.",
 
-  knowsAbout: [
-    "Python",
-    "Django",
-    "Django REST Framework",
-    "React",
-    "PostgreSQL",
-    "REST API",
-    "Backend Development",
-    "Full-Stack Development",
-    "Internet of Things",
-  ],
-};
+    email: "amirabbassalarinasab@gmail.com",
+
+    telephone: "+98 916 243 4323",
+
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Kerman",
+      addressCountry: "IR",
+    },
+
+    sameAs: [
+      "https://www.linkedin.com/in/amirabbas-salari",
+      // "YOUR_GITHUB_URL",
+    ],
+
+    knowsAbout: [
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "React",
+      "PostgreSQL",
+      "REST API",
+      "Backend Development",
+      "Full-Stack Development",
+      "Internet of Things",
+    ],
+  };
+
+  return (
+    <Script
+      id="person-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(schema),
+      }}
+    />
+  );
+}
