@@ -16,9 +16,9 @@ export default function Hero() {
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[-15%] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-violet-600/[0.08] blur-[160px]" />
+        <div className="absolute left-1/2 top-[-10%] h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-violet-600/[0.08] blur-[120px] sm:top-[-15%] sm:h-[600px] sm:w-[600px] sm:blur-[160px]" />
 
-        <div className="absolute bottom-[-20%] right-[-10%] h-[450px] w-[450px] rounded-full bg-indigo-600/[0.05] blur-[140px]" />
+        <div className="absolute bottom-[-10%] right-[-20%] h-[300px] w-[300px] rounded-full bg-indigo-600/[0.05] blur-[100px] sm:bottom-[-20%] sm:right-[-10%] sm:h-[450px] sm:w-[450px] sm:blur-[140px]" />
 
         <div
           className="absolute inset-0 opacity-[0.025]"
@@ -30,16 +30,17 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 py-32 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-[1fr_420px]">
+      <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="grid items-center gap-14 sm:gap-16 lg:grid-cols-[1fr_420px]">
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="order-1"
           >
             {/* Availability */}
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 sm:mb-7">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
 
@@ -52,12 +53,12 @@ export default function Hero() {
             </div>
 
             {/* Role */}
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-violet-400">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-violet-400 sm:text-xs sm:tracking-[0.3em]">
               {profile.role} · {profile.focus}
             </p>
 
             {/* Name */}
-            <h1 className="mt-6 max-w-4xl text-6xl font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-7xl lg:text-[92px]">
+            <h1 className="mt-5 max-w-4xl text-[48px] font-semibold leading-[0.95] tracking-[-0.055em] text-white xs:text-[54px] sm:mt-6 sm:text-7xl lg:text-[92px]">
               Amir Abbas
               <span className="block text-zinc-500">
                 Salari Nasab
@@ -65,15 +66,15 @@ export default function Hero() {
             </h1>
 
             {/* Tagline */}
-            <p className="mt-8 max-w-xl text-base leading-7 text-zinc-500 sm:text-lg">
+            <p className="mt-6 max-w-xl text-sm leading-6 text-zinc-500 sm:mt-8 sm:text-lg sm:leading-7">
               {profile.tagline}
             </p>
 
             {/* Actions */}
-            <div className="mt-9 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap">
               <Link
                 href="#projects"
-                className="group flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+                className="group flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200 sm:w-auto"
               >
                 View my work
 
@@ -86,27 +87,27 @@ export default function Hero() {
               <a
                 href="/resume/Amir-Abbas-Salari-Nasab-CV.pdf"
                 download
-                className="rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/[0.06]"
-                >
+                className="flex w-full items-center justify-center rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/[0.06] sm:w-auto"
+              >
                 Download CV
               </a>
 
               <Link
                 href="#contact"
-                className="rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/[0.06]"
+                className="flex w-full items-center justify-center rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/[0.06] sm:w-auto"
               >
                 Get in touch
               </Link>
             </div>
 
             {/* Socials */}
-            <div className="mt-10 flex items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10">
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
               >
                 <FaLinkedin size={16} />
               </a>
@@ -117,13 +118,13 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
                 >
                   <FaGithub size={16} />
                 </a>
               )}
 
-              <span className="mx-2 h-px w-8 bg-white/[0.08]" />
+              <span className="mx-1 hidden h-px w-8 bg-white/[0.08] sm:mx-2 sm:block" />
 
               <span className="text-xs text-zinc-700">
                 Based in {profile.location}
@@ -139,39 +140,39 @@ export default function Hero() {
               duration: 0.9,
               delay: 0.15,
             }}
-            className="relative mx-auto w-full max-w-[380px]"
+            className="order-2 relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px]"
           >
             {/* Glow */}
-            <div className="absolute -inset-8 rounded-full bg-violet-500/[0.08] blur-[70px]" />
+            <div className="absolute -inset-6 rounded-full bg-violet-500/[0.08] blur-[60px] sm:-inset-8 sm:blur-[70px]" />
 
             {/* Decorative ring */}
-            <div className="absolute -inset-4 rounded-[42px] border border-white/[0.04]" />
+            <div className="absolute -inset-3 rounded-[34px] border border-white/[0.04] sm:-inset-4 sm:rounded-[42px]" />
 
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[34px] border border-white/[0.1] bg-zinc-950">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.1] bg-zinc-950 sm:rounded-[34px]">
               <Image
                 src={profile.image}
                 alt={profile.name}
                 fill
                 priority
                 className="object-cover grayscale-[15%] transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 1024px) 380px, 420px"
+                sizes="(max-width: 640px) 300px, (max-width: 1024px) 340px, 420px"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
               {/* Image label */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-2xl border border-white/[0.08] bg-black/50 px-4 py-3 backdrop-blur-xl">
-                <div>
-                  <p className="text-xs text-zinc-500">
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-white/[0.08] bg-black/50 px-3.5 py-3 backdrop-blur-xl sm:bottom-5 sm:left-5 sm:right-5 sm:px-4">
+                <div className="min-w-0">
+                  <p className="text-[10px] text-zinc-500 sm:text-xs">
                     Currently focused on
                   </p>
 
-                  <p className="mt-1 text-sm font-medium text-white">
+                  <p className="mt-1 truncate text-xs font-medium text-white sm:text-sm">
                     Backend Engineering
                   </p>
                 </div>
 
-                <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                <div className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
               </div>
             </div>
           </motion.div>
@@ -189,10 +190,7 @@ export default function Hero() {
             Scroll
           </span>
 
-          <ArrowDown
-            size={15}
-            className="animate-bounce"
-          />
+          <ArrowDown size={15} className="animate-bounce" />
         </motion.a>
       </div>
     </section>
