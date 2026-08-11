@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden border-b border-white/[0.06]"
+      className="relative overflow-hidden border-b border-white/[0.06]"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
@@ -30,14 +30,62 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="grid items-center gap-14 sm:gap-16 lg:grid-cols-[1fr_420px]">
+      <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-20 sm:px-6 sm:py-32 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_380px] lg:gap-20">
+          
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.05,
+            }}
+            className="order-1 mx-auto w-full max-w-[210px] sm:max-w-[260px] lg:order-2 lg:max-w-[380px]"
+          >
+            <div className="relative">
+              {/* Glow */}
+              <div className="absolute -inset-6 rounded-full bg-violet-500/[0.08] blur-[55px]" />
+
+              {/* Decorative frame */}
+              <div className="absolute -inset-2 rounded-[30px] border border-white/[0.05] sm:-inset-3 sm:rounded-[36px]" />
+
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] border border-white/[0.1] bg-zinc-950 sm:rounded-[32px]">
+                <Image
+                  src={profile.image}
+                  alt={profile.name}
+                  fill
+                  priority
+                  className="object-cover grayscale-[15%]"
+                  sizes="(max-width: 640px) 210px, (max-width: 1024px) 260px, 380px"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                {/* Image label */}
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-white/[0.08] bg-black/50 px-3 py-2.5 backdrop-blur-xl sm:bottom-4 sm:left-4 sm:right-4 sm:rounded-2xl sm:px-4 sm:py-3">
+                  <div>
+                    <p className="text-[9px] text-zinc-500 sm:text-xs">
+                      Currently focused on
+                    </p>
+
+                    <p className="mt-0.5 text-[11px] font-medium text-white sm:mt-1 sm:text-sm">
+                      Backend Engineering
+                    </p>
+                  </div>
+
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 sm:h-2 sm:w-2" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="order-1"
+            className="order-2 lg:order-1"
           >
             {/* Availability */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 sm:mb-7">
@@ -58,7 +106,7 @@ export default function Hero() {
             </p>
 
             {/* Name */}
-            <h1 className="mt-5 max-w-4xl text-[48px] font-semibold leading-[0.95] tracking-[-0.055em] text-white xs:text-[54px] sm:mt-6 sm:text-7xl lg:text-[92px]">
+            <h1 className="mt-5 text-[48px] font-semibold leading-[0.92] tracking-[-0.055em] text-white sm:mt-6 sm:text-7xl lg:text-[88px]">
               Amir Abbas
               <span className="block text-zinc-500">
                 Salari Nasab
@@ -107,7 +155,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
               >
                 <FaLinkedin size={16} />
               </a>
@@ -118,7 +166,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.08] text-zinc-500 transition-all hover:border-white/20 hover:bg-white/[0.04] hover:text-white"
                 >
                   <FaGithub size={16} />
                 </a>
@@ -129,51 +177,6 @@ export default function Hero() {
               <span className="text-xs text-zinc-700">
                 Based in {profile.location}
               </span>
-            </div>
-          </motion.div>
-
-          {/* Profile */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.15,
-            }}
-            className="order-2 relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px]"
-          >
-            {/* Glow */}
-            <div className="absolute -inset-6 rounded-full bg-violet-500/[0.08] blur-[60px] sm:-inset-8 sm:blur-[70px]" />
-
-            {/* Decorative ring */}
-            <div className="absolute -inset-3 rounded-[34px] border border-white/[0.04] sm:-inset-4 sm:rounded-[42px]" />
-
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.1] bg-zinc-950 sm:rounded-[34px]">
-              <Image
-                src={profile.image}
-                alt={profile.name}
-                fill
-                priority
-                className="object-cover grayscale-[15%] transition-transform duration-700 hover:scale-105"
-                sizes="(max-width: 640px) 300px, (max-width: 1024px) 340px, 420px"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-              {/* Image label */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-white/[0.08] bg-black/50 px-3.5 py-3 backdrop-blur-xl sm:bottom-5 sm:left-5 sm:right-5 sm:px-4">
-                <div className="min-w-0">
-                  <p className="text-[10px] text-zinc-500 sm:text-xs">
-                    Currently focused on
-                  </p>
-
-                  <p className="mt-1 truncate text-xs font-medium text-white sm:text-sm">
-                    Backend Engineering
-                  </p>
-                </div>
-
-                <div className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
-              </div>
             </div>
           </motion.div>
         </div>
