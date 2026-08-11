@@ -18,14 +18,20 @@ export const certifications: Certification[] = [
   },
 
   {
-    title: "Python Programming",
-    issuer: "Technical and Vocational Training Organization of Iran",
-    image: "/images/certificates/python.jpg",
-  },
-
-  {
     title: "C++ Programming",
     issuer: "Faradars",
     image: "/images/certificates/cpp.jpg",
+  },
+
+  {
+    title: "C#",
+    issuer: "HackerRank",
+    image: "/images/certificates/c-sharp.jpg",
+  },
+  
+  {
+    title: "Python Programming",
+    issuer: "Technical and Vocational Training Organization of Iran",
+    image: "/images/certificates/python.jpg",
   },
 ];
