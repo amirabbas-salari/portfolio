@@ -10,11 +10,11 @@ export const certifications: Certification[] = [
     issuer: "Quera College",
     image: "/images/certificates/django-backend.jpg",
   },
-
+  
   {
-    title: "Advanced Python Programming",
-    issuer: "Quera College",
-    image: "/images/certificates/advanced-python.jpg",
+    title: "C#",
+    issuer: "HackerRank",
+    image: "/images/certificates/c-sharp.jpg",
   },
 
   {
@@ -24,9 +24,9 @@ export const certifications: Certification[] = [
   },
 
   {
-    title: "C#",
-    issuer: "HackerRank",
-    image: "/images/certificates/c-sharp.jpg",
+    title: "Advanced Python Programming",
+    issuer: "Quera College",
+    image: "/images/certificates/advanced-python.jpg",
   },
   
   {

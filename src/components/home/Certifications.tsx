@@ -35,7 +35,7 @@ export default function Certifications() {
         </motion.div>
 
         {/* Certificates */}
-        <div className="mt-16 grid gap-5 md:grid-cols-2">
+        <div className="mt-16 columns-1 gap-6 md:columns-2">
           {certifications.map((certification, index) => (
             <motion.div
               key={certification.title}
@@ -56,9 +56,13 @@ export default function Certifications() {
                 delay: index * 0.08,
               }}
             >
-              <CertificationCard
-                certification={certification}
-              />
+              <div
+                className="mb-6 break-inside-avoid"
+              >
+                <CertificationCard
+                  certification={certification}
+                />
+              </div>
             </motion.div>
           ))}
         </div>
