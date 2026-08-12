@@ -5,12 +5,14 @@ export default function PersonSchema() {
     "@context": "https://schema.org",
     "@type": "Person",
 
-    name: "Amir Abbas Salari Nasab",
+    name: "امیرعباس سالاری",
 
     alternateName: [
       "Amir Abbas Salari",
+      "Amir Abbas Salari Nasab",
       "Amirabbas Salari Nasab",
       "Amirabbas Salari",
+      "امیرعباس سالاری",
       "امیر عباس سالاری نسب",
       "امیرعباس سالاری نسب",
       "امیر عباس سالاری",
