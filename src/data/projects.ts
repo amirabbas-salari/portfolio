@@ -87,7 +87,7 @@ export const projects: Project[] = [
 
     liveUrl: "",
 
-    githubUrl: "",
+    githubUrl: "https://github.com/amirabbas-salari/hand_mouse_control",
 
     image: "/images/projects/barber.jpg",
 
@@ -95,4 +95,49 @@ export const projects: Project[] = [
 
     status: "In Development",
     },
+    {
+    slug: "ai-hand-mouse-control",
+
+    title: "AI Hand Mouse Control",
+
+    subtitle: "Real-Time AI Virtual Mouse",
+
+    description:
+      "A real-time AI virtual mouse that allows users to control their computer using hand gestures through a webcam.",
+
+    longDescription:
+      "AI Hand Mouse Control is a real-time computer vision project that transforms a standard webcam into a virtual mouse. The system uses MediaPipe Hand Landmarker to detect 21 hand landmarks and interprets hand gestures to control the operating system mouse. Users can move the cursor with their index finger, perform left and right clicks using pinch gestures, and scroll using two-finger movements. The project is built with Python, OpenCV, MediaPipe, PyAutoGUI, and NumPy using a modular architecture designed for future improvements.",
+
+    technologies: [
+      "Python",
+      "OpenCV",
+      "MediaPipe",
+      "PyAutoGUI",
+      "NumPy",
+      "Computer Vision",
+      "Git",
+    ],
+
+    features: [
+      "Real-Time Hand Tracking",
+      "21 Hand Landmark Detection",
+      "Index Finger Mouse Control",
+      "Left Click Gesture",
+      "Right Click Gesture",
+      "Gesture-Based Scrolling",
+      "Webcam Integration",
+      "Real-Time Gesture Recognition",
+      "Modular Architecture",
+    ],
+
+    liveUrl: "",
+
+    githubUrl: "",
+
+    image: "/images/projects/hand-mouse-control.jpg",
+
+    featured: true,
+
+    status: "Completed",
+  },
 ];
