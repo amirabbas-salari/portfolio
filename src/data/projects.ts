@@ -140,4 +140,62 @@ export const projects: Project[] = [
 
     status: "Completed",
   },
+  {
+  slug: "advertisement-gaze-analytics",
+
+  title: "Advertisement Gaze Analytics",
+
+  subtitle: "Deep Learning-Based Advertisement Gaze Tracking & Analytics",
+
+  description:
+    "A computer vision and deep learning system for detecting, tracking, and analyzing viewers' gaze and attention toward digital advertisements.",
+
+  longDescription:
+    "Advertisement Gaze Analytics is an AI-powered computer vision system designed to analyze how viewers interact with digital advertisements. The system combines MediaPipe Face Landmarker for facial landmarks and head geometry with L2CS-Net for deep learning-based gaze estimation. It uses face tracking, identity recognition, gaze fusion, screen calibration, attention analysis, session management, and spatial gaze visualization to determine when and where viewers look at an advertisement. The collected data can be stored and analyzed to generate attention statistics, gaze points, and advertisement heatmaps.",
+
+  technologies: [
+    "Python",
+    "PyTorch",
+    "OpenCV",
+    "MediaPipe",
+    "L2CS-Net",
+    "InsightFace",
+    "ArcFace",
+    "ONNX Runtime",
+    "NumPy",
+    "SQLite",
+    "Computer Vision",
+    "Deep Learning",
+  ],
+
+  features: [
+    "Real-Time Face Detection",
+    "478 3D Facial Landmarks",
+    "Head Pose Estimation",
+    "Deep Learning-Based Gaze Estimation",
+    "Multi-Object Face Tracking",
+    "Face Recognition",
+    "Person Identification",
+    "Gaze Fusion",
+    "Screen Calibration",
+    "Gaze Point Estimation",
+    "Attention Detection",
+    "Look Session Management",
+    "Advertisement Analytics",
+    "Gaze Heatmaps",
+    "SQLite Data Storage",
+    "JSON & Analytical Data Export",
+    "Real-Time Visualization",
+  ],
+
+  liveUrl: "",
+
+  githubUrl: "https://github.com/amirabbas-salari/gaze-analytics",
+
+  image: "/images/projects/advertisement-gaze-analytics.jpg",
+
+  featured: true,
+
+  status: "In Development",
+},
 ];
