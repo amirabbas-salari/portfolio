@@ -7,22 +7,21 @@ export interface SkillCategory {
 export const skillCategories: SkillCategory[] = [
   {
     title: "AI & Computer Vision",
+  
     description:
-      "Building computer vision and deep learning systems for image, video, face, and gaze analysis.",
+      "Building real-time AI and computer vision systems for visual perception and human-computer interaction.",
+  
     skills: [
       "Computer Vision",
       "Deep Learning",
       "PyTorch",
       "OpenCV",
       "MediaPipe",
-      "MediaPipe Face Landmarker",
-      "L2CS-Net",
+      "Face Analysis",
       "Gaze Estimation",
-      "Face Landmark Detection",
-      "Head Pose Estimation",
+      "Hand Tracking",
+      "Gesture Recognition",
       "Face Recognition",
-      "ArcFace",
-      "InsightFace",
       "ONNX Runtime",
     ],
   },
