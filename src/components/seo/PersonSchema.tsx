@@ -24,10 +24,10 @@ export default function PersonSchema() {
     image:
       "https://amirabbassalari.ir/images/profile/profile.jpg",
 
-    jobTitle: "Full-Stack Developer",
+    jobTitle: "AI & Computer Vision Developer",
 
     description:
-      "Full-Stack Developer focused on Backend Development with Python, Django, Django REST Framework, and React.",
+      "AI and Computer Vision Developer focused on building real-time intelligent vision systems for face analysis, gaze estimation, hand tracking, gesture recognition, and human-computer interaction using Python, PyTorch, OpenCV, MediaPipe, and ONNX Runtime.",
 
     email: "amirabbassalarinasab@gmail.com",
 
@@ -45,15 +45,34 @@ export default function PersonSchema() {
     ],
 
     knowsAbout: [
+      "Artificial Intelligence",
+      "Computer Vision",
+      "Deep Learning",
+      "Real-Time Computer Vision",
+
+      "PyTorch",
+      "OpenCV",
+      "MediaPipe",
+      "ONNX Runtime",
+
+      "Face Analysis",
+      "Face Landmark Detection",
+      "Face Recognition",
+      "Gaze Estimation",
+      "Head Pose Estimation",
+
+      "Hand Tracking",
+      "Hand Landmark Detection",
+      "Gesture Recognition",
+      "Human-Computer Interaction",
+
       "Python",
+
+      "Backend Development",
       "Django",
       "Django REST Framework",
-      "React",
-      "PostgreSQL",
       "REST API",
-      "Backend Development",
-      "Full-Stack Development",
-      "Internet of Things",
+      "React",
     ],
   };
 
