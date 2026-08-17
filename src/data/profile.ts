@@ -5,7 +5,7 @@ export const profile = {
 
   role: "AI & Computer Vision Developer",
 
-  focus: "AI / Computer Vision",
+  // focus: "AI / Computer Vision",
 
   tagline:
     "Building intelligent AI systems and scalable full-stack applications.",
