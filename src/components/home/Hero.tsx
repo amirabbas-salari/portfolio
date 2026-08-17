@@ -70,7 +70,7 @@ export default function Hero() {
                     </p>
 
                     <p className="mt-0.5 text-[11px] font-medium text-white sm:mt-1 sm:text-sm">
-                      Backend Engineering
+                      AI / Computer Vision
                     </p>
                   </div>
 
@@ -102,7 +102,7 @@ export default function Hero() {
 
             {/* Role */}
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-violet-400 sm:text-xs sm:tracking-[0.3em]">
-              {profile.role} · {profile.focus}
+              {profile.role}
             </p>
 
             {/* Name */}
