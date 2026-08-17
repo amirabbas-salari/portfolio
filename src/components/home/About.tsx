@@ -21,7 +21,7 @@ export default function About() {
             </p>
 
             <h2 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-              Building with curiosity and purpose.
+              Building intelligent systems with purpose.
             </h2>
           </motion.div>
 
@@ -35,42 +35,45 @@ export default function About() {
             }}
           >
             <p className="text-xl leading-9 text-zinc-400">
-              I&apos;m a Computer Engineering student passionate about
-              backend development, artificial intelligence, and IoT.
+              I&apos;m a Computer Engineering student focused on
+              artificial intelligence, computer vision, and full-stack development.
             </p>
 
             <p className="mt-6 text-base leading-8 text-zinc-600">
-              My main focus is building reliable and scalable web
-              applications with Python and Django. I also work with
-              React to create modern full-stack experiences and enjoy
-              exploring technologies that help turn complex problems
-              into practical software solutions.
+              My main focus is building real-time AI and computer vision
+              systems for visual perception and intelligent interaction.
+              I work with technologies such as PyTorch, OpenCV, and
+              MediaPipe to explore problems involving face analysis,
+              gaze estimation, hand tracking, and gesture recognition.
+              Alongside AI, I build scalable full-stack applications and
+              RESTful APIs using Python, Django, Django REST Framework,
+              and React.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-8 border-t border-white/[0.06] pt-8 sm:grid-cols-3">
               <div>
                 <p className="text-2xl font-semibold text-white">
-                  Python
+                  Computer Vision
                 </p>
 
                 <p className="mt-1 text-xs text-zinc-600">
-                  Primary Language
+                  Primary Focus
                 </p>
               </div>
 
               <div>
                 <p className="text-2xl font-semibold text-white">
-                  Django
+                  PyTorch
                 </p>
 
                 <p className="mt-1 text-xs text-zinc-600">
-                  Backend Framework
+                  Deep Learning
                 </p>
               </div>
 
               <div>
                 <p className="text-2xl font-semibold text-white">
-                  React
+                  Web Development
                 </p>
 
                 <p className="mt-1 text-xs text-zinc-600">
