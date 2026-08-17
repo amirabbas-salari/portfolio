@@ -70,7 +70,7 @@ export default function Hero() {
                     </p>
 
                     <p className="mt-0.5 text-[11px] font-medium text-white sm:mt-1 sm:text-sm">
-                      AI / Computer Vision
+                      AI & Computer Vision
                     </p>
                   </div>
 
