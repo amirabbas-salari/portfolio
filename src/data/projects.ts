@@ -87,7 +87,7 @@ export const projects: Project[] = [
 
     liveUrl: "",
 
-    githubUrl: "https://github.com/amirabbas-salari/hand_mouse_control",
+    githubUrl: "",
 
     image: "/images/projects/barber.jpg",
 
@@ -132,7 +132,7 @@ export const projects: Project[] = [
 
     liveUrl: "",
 
-    githubUrl: "",
+    githubUrl: "https://github.com/amirabbas-salari/hand_mouse_control",
 
     image: "/images/projects/hand-mouse-control.jpg",
 
