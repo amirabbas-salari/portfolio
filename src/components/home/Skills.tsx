@@ -8,6 +8,7 @@ import {
   Cpu,
   Layers3,
   Terminal,
+  ScanFace,
 } from "lucide-react";
 
 import { skillCategories } from "@/data/skills";
@@ -19,6 +20,7 @@ const icons = [
   GitBranch,
   Cpu,
   Terminal,
+  ScanFace,
 ];
 
 export default function Skills() {
