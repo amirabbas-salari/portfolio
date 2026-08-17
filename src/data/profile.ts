@@ -3,11 +3,12 @@ export const profile = {
 
   shortName: "AASN",
 
-  role: "Full-Stack Developer",
+  role: "AI & Computer Vision Developer",
 
-  focus: "Backend-Focused",
+  focus: "AI / Computer Vision",
 
-  tagline: "Building scalable web applications with modern technologies.",
+  tagline:
+    "Building real-time AI and computer vision systems for visual perception and intelligent interaction.",
 
   email: "amirabbassalarinasab@gmail.com",
 
@@ -21,7 +22,7 @@ export const profile = {
   github: "",
 
   summary:
-    "Computer Engineering student passionate about Backend Development, Artificial Intelligence, and Internet of Things. Experienced in developing web applications using Python, Django, Django REST Framework, and React.",
+    "Computer Engineering student focused on Artificial Intelligence and Computer Vision. Experienced in developing real-time vision systems for face analysis, gaze estimation, hand tracking, gesture recognition, and human-computer interaction using Python, PyTorch, OpenCV, MediaPipe, and ONNX Runtime. Also experienced in backend and full-stack development with Django and Django REST Framework.",
 
   image: "/images/profile/profile.jpg",
 };
