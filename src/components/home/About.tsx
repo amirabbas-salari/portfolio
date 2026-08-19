@@ -77,7 +77,7 @@ export default function About() {
                 </p>
 
                 <p className="mt-1 text-xs text-zinc-600">
-                  Frontend
+                  Full-Stack Developer | Django • React
                 </p>
               </div>
             </div>
