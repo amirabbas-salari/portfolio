@@ -20,7 +20,7 @@ export default function Footer() {
             </Link>
 
             <p className="mt-2 text-xs text-zinc-600">
-              Full-Stack Developer · Backend-Focused
+              Full-Stack Developer & AI Engineer | Django • React • Computer Vision
             </p>
           </div>
 
