@@ -133,7 +133,7 @@ export default function Hero() {
               </Link>
 
               <a
-                href="/resume/Amir-Abbas-Salari-Nasab-CV.pdf"
+                href="/Amir-Abbas-Salari-Nasab-CV.pdf"
                 download
                 className="flex w-full items-center justify-center rounded-full border border-white/10 bg-white/[0.025] px-6 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/[0.06] sm:w-auto"
               >
