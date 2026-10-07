@@ -6,6 +6,11 @@ export interface Certification {
 
 export const certifications: Certification[] = [
   {
+    title: "Image Processing",
+    issuer: "Quera College",
+    image: "/images/certificates/IMGPROC-LICENCE.jpg",
+  },
+  {
     title: "Django Backend Development",
     issuer: "Quera College",
     image: "/images/certificates/django-backend.jpg",
