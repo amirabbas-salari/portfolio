@@ -256,4 +256,58 @@ export const projects: Project[] = [
 
   status: "In Development",
 },
+
+  {
+slug: "iot-smart-lock",
+
+title: "IoT Smart Lock",
+
+subtitle: "IoT-Based Smart Access Control System",
+
+description:
+"An IoT-based smart locking system that provides RFID/NFC, web-based, and GSM access control with user management and activity logging.",
+
+longDescription:
+"IoT Smart Lock is an embedded access control system built around an ESP8266 and a 12V electronic door lock. The system supports multiple authentication methods, including RFID/NFC cards and tags, a web-based control panel accessible from mobile devices, and GSM-based access through calls or SMS from authorized phone numbers. Authenticated users can unlock the door, manage registered RFID cards and tags, and monitor access activity through the web interface. A master RFID card can also be used to register new cards or tags directly on the device. The system records access events and provides a flexible foundation for building a connected and remotely manageable smart locking system.",
+
+technologies: [
+"C/C++",
+"ESP8266",
+"RFID",
+"NFC",
+"GSM",
+"Embedded Systems",
+"IoT",
+"Web Interface",
+"12V Electronic Lock",
+],
+
+features: [
+"RFID Card Authentication",
+"NFC Tag Authentication",
+"Web-Based Door Control",
+"Mobile Web Interface",
+"User Authentication",
+"RFID Card Registration",
+"NFC Tag Registration",
+"Master RFID Card",
+"GSM Call-Based Unlocking",
+"GSM SMS-Based Unlocking",
+"Authorized Phone Numbers",
+"Access Activity Logging",
+"Remote Access Control",
+"Electronic Door Lock Control",
+],
+
+liveUrl: "",
+
+githubUrl: "",
+
+image: "/images/projects/iot-smart-lock.jpg",
+
+featured: true,
+
+status: "Completed",
+},
+
 ];
