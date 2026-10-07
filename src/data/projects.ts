@@ -95,6 +95,64 @@ export const projects: Project[] = [
 
     status: "In Development",
     },
+    
+    {
+    slug: "jarvis-ai-voice-assistant",
+    
+    title: "JARVIS AI Voice Assistant",
+    
+    subtitle: "Modular AI Voice Assistant",
+    
+    description:
+    "A modular AI voice assistant that combines speech recognition, LLMs, memory, tool calling, text-to-speech, and computer control.",
+    
+    longDescription:
+    "JARVIS is a local voice-controlled AI assistant inspired by JARVIS from Iron Man. The system combines Faster-Whisper for speech-to-text, Silero VAD for voice activity detection, NVIDIA Nemotron through OpenRouter for language understanding, and n8n as the AI orchestration layer. It supports conversational memory, AI agent tool calling, local file operations, computer interaction, text-to-speech, and Persian and English language support. The architecture is designed to remain modular and extensible, allowing new tools and capabilities to be added without redesigning the core voice service.",
+    
+    technologies: [
+    "Python",
+    "Faster-Whisper",
+    "Silero VAD",
+    "NVIDIA Nemotron",
+    "OpenRouter",
+    "n8n",
+    "Docker",
+    "AI Agents",
+    "LLM",
+    "Text-to-Speech",
+    "Computer Use",
+    "HTTP / Webhooks",
+    ],
+    
+    features: [
+    "Voice Input",
+    "Speech-to-Text",
+    "Voice Activity Detection",
+    "LLM-Powered Conversations",
+    "AI Agent",
+    "Conversation Memory",
+    "Tool Calling",
+    "Computer Control",
+    "File & Folder Operations",
+    "File Creation",
+    "Text-to-Speech",
+    "Persian Language Support",
+    "English Language Support",
+    "Modular Architecture",
+    ],
+    
+    liveUrl: "",
+    
+    githubUrl: "https://github.com/amirabbas-salari/JARVIS-AI-Voice-Assistant",
+    
+    image: "/images/projects/jarvis.jpg",
+    
+    featured: true,
+    
+    status: "In Development",
+    },
+
+  
     {
     slug: "ai-hand-mouse-control",
 
