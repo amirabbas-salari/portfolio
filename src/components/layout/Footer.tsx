@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  FileText,
   Mail,
 } from "lucide-react";
 
@@ -42,6 +43,14 @@ export default function Footer() {
 
           {/* Social */}
           <div className="flex items-center gap-3">
+
+            <Link
+              href="/resume"
+              className="flex h-9 items-center gap-2 border border-zinc-500 px-4 text-xs text-zinc-500 transition-colors hover:border-violet-400 hover:text-violet-400"
+            >
+              <FileText size={13} />
+              One-screen résumé
+            </Link>
 
             <a
               href={profile.linkedin}

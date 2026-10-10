@@ -25,6 +25,11 @@ const navItems = [
     label: "Contact",
     href: "#contact",
   },
+  {
+    label: "Résumé",
+    href: "/resume",
+    highlight: true,
+  },
 ];
 
 export default function Navbar() {
@@ -99,7 +104,11 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-full px-4 py-2 text-xs font-medium text-zinc-500 transition-all duration-300 hover:bg-white/[0.05] hover:text-white"
+                  className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 ${
+                    item.highlight
+                      ? "text-violet-400 hover:bg-violet-500/10 hover:text-violet-300"
+                      : "text-zinc-500 hover:bg-white/[0.05] hover:text-white"
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -164,7 +173,11 @@ export default function Navbar() {
                 onClick={closeMenu}
                 className="group flex items-center justify-between border-b border-white/[0.06] py-5"
               >
-                <span className="text-3xl font-medium tracking-tight text-zinc-400 transition-colors duration-300 group-hover:text-white">
+                <span
+                  className={`text-3xl font-medium tracking-tight transition-colors duration-300 group-hover:text-white ${
+                    item.highlight ? "text-violet-400" : "text-zinc-400"
+                  }`}
+                >
                   {item.label}
                 </span>
 

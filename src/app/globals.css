@@ -200,3 +200,93 @@ a {
   );
   background-size: 10px 10px;
 }
+
+/* --------------------------------
+   One-screen résumé
+--------------------------------- */
+
+.font-display {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-editorial {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* Film grain */
+.resume-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Fade the sheet in once its fit has been measured */
+.resume-fade {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.resume-fade[data-ready="true"] {
+  opacity: 1;
+}
+
+@media (scripting: none) {
+  .resume-fade {
+    opacity: 1;
+  }
+}
+
+/* Printing the one-screen résumé */
+@media print {
+  html,
+  body {
+    background: #08080a;
+  }
+
+  .resume-screen {
+    position: static !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .resume-fade {
+    opacity: 1 !important;
+  }
+
+  .resume-sheet-wrap {
+    position: static !important;
+    transform: none !important;
+  }
+}
+
+/* Slow ambient drift for the résumé glows */
+@keyframes resume-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(2.5%, 2%, 0) scale(1.06);
+    opacity: 1;
+  }
+}
+
+.resume-drift {
+  animation: resume-drift 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-drift,
+  .animate-ping {
+    animation: none !important;
+  }
+
+  .resume-fade {
+    transition: none !important;
+  }
+}

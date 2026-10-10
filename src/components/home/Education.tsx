@@ -4,21 +4,7 @@ import { motion } from "framer-motion";
 import { BookOpen, Globe2, MapPin } from "lucide-react";
 
 import { education } from "@/data/education";
-
-const languages = [
-  {
-    name: "Persian",
-    level: "Native",
-  },
-  {
-    name: "English",
-    level: "Professional Working Proficiency",
-  },
-  {
-    name: "Turkish",
-    level: "Conversational",
-  },
-];
+import { languages } from "@/data/languages";
 
 export default function Education() {
   return (
