@@ -11,41 +11,53 @@ import ProjectCard from "@/components/projects/ProjectCard";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
-  const featuredProjects = projects.slice(0, 6);
+  const featuredProjects = projects.slice(0, 4);
 
   return (
     <section
       id="projects"
       className="relative border-t border-line/70 py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <div className="flex flex-wrap items-center justify-between gap-6">
-            <SectionHeading
-              index="03"
-              title="Selected Work"
-              hint={`// ${projects.length} builds`}
-            />
-
-            <Link
-              href="/projects/projects"
-              className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-mist transition-colors hover:text-chalk"
-            >
-              View all
-              <ArrowRight
-                size={14}
-                className="text-cyan transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-          </div>
+          <SectionHeading
+            kicker="Featured Projects"
+            title={
+              <>
+                Some Things
+                <br />
+                I&apos;ve Built
+              </>
+            }
+            aside={
+              <Link
+                href="/projects/projects"
+                className="group inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream-2 transition-colors duration-300 hover:text-cream"
+              >
+                View All Projects
+                <ArrowRight
+                  size={13}
+                  className="text-sepia transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
+            }
+          />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Reveal delay={0.05}>
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-cream-3">
+            Here are a few selected projects that showcase my skills and
+            interests in web development, AI and computer vision.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-px bg-line/70 sm:grid-cols-2 xl:grid-cols-4">
           {featuredProjects.map((project, index) => (
             <ProjectCard
               key={project.slug}
               project={project}
               index={index}
+              variant="flat"
             />
           ))}
         </div>

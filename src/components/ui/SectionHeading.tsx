@@ -1,35 +1,44 @@
 import type { ReactNode } from "react";
 
 interface SectionHeadingProps {
-  index: string;
-  title: string;
-  hint?: string;
-  children?: ReactNode;
+  /** Rendered as a mono kicker: "// {kicker}" */
+  kicker: string;
+  title: ReactNode;
+  aside?: ReactNode;
+  tone?: "ink" | "paper";
 }
 
 export default function SectionHeading({
-  index,
+  kicker,
   title,
-  hint,
-  children,
+  aside,
+  tone = "ink",
 }: SectionHeadingProps) {
+  const paper = tone === "paper";
+
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-      <span className="label text-cyan/70">[ {index} ]</span>
+    <div>
+      <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between md:gap-12">
+        <div className="max-w-2xl">
+          <p className={`label ${paper ? "label-paper" : ""}`}>
+            {`// ${kicker}`}
+          </p>
 
-      <span className="h-px w-8 shrink-0 bg-gradient-to-r from-cyan/60 to-transparent" />
+          <h2
+            className={`mt-4 font-display text-[clamp(1.9rem,4.2vw,2.9rem)] font-semibold leading-[1.06] tracking-[-0.02em] ${
+              paper ? "text-ink" : "text-cream"
+            }`}
+          >
+            {title}
+          </h2>
+        </div>
 
-      <h2 className="font-display text-xl font-semibold uppercase tracking-[0.16em] text-chalk sm:text-2xl">
-        {title}
-      </h2>
+        {aside ? (
+          <div className="shrink-0 md:pb-1.5">{aside}</div>
+        ) : null}
+      </div>
 
-      <span className="hidden h-px flex-1 bg-line sm:block" />
-
-      {hint ? (
-        <span className="label hidden text-dim md:block">{hint}</span>
-      ) : null}
-
-      {children}
+      <div className={`mt-8 ${paper ? "rule-ink" : "rule"}`} />
     </div>
   );
 }

@@ -1,147 +1,163 @@
 "use client";
 
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import { FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 import { profile } from "@/data/profile";
 
-const channels = [
-  {
-    label: "Email",
-    value: profile.email,
-    href: `mailto:${profile.email}`,
-    icon: Mail,
-  },
-  {
-    label: "Phone",
-    value: profile.phone,
-    href: `tel:${profile.phone.replace(/\s/g, "")}`,
-    icon: Phone,
-  },
-  {
-    label: "Base",
-    value: profile.location,
-    href: undefined,
-    icon: MapPin,
-  },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/amirabbas-salari",
-    href: profile.linkedin,
-    icon: FaLinkedin,
-  },
-];
-
 export default function Contact() {
+  const channels = [
+    {
+      label: "Email",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+      icon: Mail,
+    },
+    ...(profile.github
+      ? [
+          {
+            label: "GitHub",
+            value: "github.com/amirabbas-salari",
+            href: profile.github,
+            icon: FaGithub,
+          },
+        ]
+      : []),
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/amirabbas-salari",
+      href: profile.linkedin,
+      icon: FaLinkedin,
+    },
+    {
+      label: "Phone",
+      value: profile.phone,
+      href: `tel:${profile.phone.replace(/\s/g, "")}`,
+      icon: Phone,
+    },
+    {
+      label: "Base",
+      value: profile.location,
+      href: undefined,
+      icon: MapPin,
+    },
+  ];
+
   return (
-    <section
-      id="contact"
-      className="relative border-t border-line/70 py-24 sm:py-28"
-    >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <SectionHeading index="07" title="Contact" hint="// open channel" />
+          {/* Knockout paper panel */}
+          <div className="paper paper-edge relative overflow-hidden">
+            <div className="halftone pointer-events-none absolute inset-0 opacity-25" />
+
+            <div className="relative px-6 py-14 sm:px-10 lg:px-14">
+              <SectionHeading
+                tone="paper"
+                kicker="Get In Touch"
+                title={
+                  <>
+                    Let&apos;s
+                    <br />
+                    Connect
+                  </>
+                }
+                aside={
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="group inline-flex items-center gap-2 border-b border-ink/40 pb-1 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-[#6b5335] hover:text-[#6b5335]"
+                  >
+                    Say Hello
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
+                }
+              />
+
+              <div className="mt-12 grid gap-12 lg:grid-cols-[0.95fr_1.55fr] lg:gap-14">
+                <div>
+                  <p className="text-[15px] leading-8 text-ink/75">
+                    Whether you have a project idea, a collaboration
+                    opportunity, or simply want to connect — my inbox is open.
+                    I reply fast and I like hard problems.
+                  </p>
+
+                  <p className="mt-10 font-display text-[26px] font-semibold leading-tight tracking-[-0.02em] text-ink">
+                    Open for new
+                    <br />
+                    opportunities
+                  </p>
+
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="group mt-8 inline-flex items-center gap-2 border border-ink/30 px-6 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink transition-all duration-300 hover:bg-ink hover:text-cream"
+                  >
+                    Start a project
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
+                </div>
+
+                <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                  {channels.map((channel) => {
+                    const Icon = channel.icon;
+
+                    const inner = (
+                      <>
+                        <span className="label label-paper shrink-0">
+                          {`// ${channel.label}`}
+                        </span>
+
+                        <span className="mt-2.5 break-all text-[15px] leading-6 text-ink">
+                          {channel.value}
+                        </span>
+
+                        <Icon
+                          size={13}
+                          className="mt-3 shrink-0 text-[#6b5335]"
+                        />
+                      </>
+                    );
+
+                    const shared =
+                      "group flex flex-col border-t border-ink/25 pt-4 transition-opacity duration-300 hover:opacity-70";
+
+                    return channel.href ? (
+                      <a
+                        key={channel.label}
+                        href={channel.href}
+                        target={
+                          channel.href.startsWith("http")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          channel.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className={shared}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div key={channel.label} className={shared}>
+                        {inner}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
         </Reveal>
-
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Pitch */}
-          <Reveal>
-            <h3 className="font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-chalk sm:text-4xl">
-              Let&apos;s build something
-              <br />
-              <span className="chrome-text">worth shipping.</span>
-            </h3>
-
-            <p className="mt-7 max-w-xl text-sm leading-8 text-mist/80">
-              Whether you have a project idea, a collaboration opportunity, or
-              simply want to connect — my inbox is open. I reply fast and I
-              like hard problems.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a
-                href={`mailto:${profile.email}`}
-                className="group notch-sm inline-flex items-center gap-2 border border-cyan/45 bg-cyan/10 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-all duration-300 hover:border-cyan hover:bg-cyan/20 hover:shadow-[0_0_34px_-8px_rgba(53,230,255,0.65)]"
-              >
-                Send message
-                <ArrowUpRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                />
-              </a>
-
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="notch-sm inline-flex items-center gap-2 border border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-all duration-300 hover:border-cyan/45 hover:text-chalk"
-              >
-                <FaLinkedin size={13} />
-                LinkedIn
-              </a>
-            </div>
-          </Reveal>
-
-          {/* Channels */}
-          <Reveal delay={0.1}>
-            <div className="hud hud-quiet relative p-7">
-              <div className="flex items-center justify-between">
-                <p className="label text-cyan/70">[ Channels ]</p>
-
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
-                </span>
-              </div>
-
-              <div className="mt-6 divide-y divide-line/60">
-                {channels.map((channel) => {
-                  const Icon = channel.icon;
-
-                  const inner = (
-                    <>
-                      <Icon size={14} className="shrink-0 text-cyan/70" />
-
-                      <span className="label w-[76px] shrink-0 text-dim">
-                        {channel.label}
-                      </span>
-
-                      <span className="truncate text-sm text-chalk">
-                        {channel.value}
-                      </span>
-                    </>
-                  );
-
-                  const shared =
-                    "group flex items-center gap-4 py-4 transition-colors duration-300 hover:text-cyan";
-
-                  return channel.href ? (
-                    <a
-                      key={channel.label}
-                      href={channel.href}
-                      target={channel.href.startsWith("http") ? "_blank" : undefined}
-                      rel={
-                        channel.href.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      className={shared}
-                    >
-                      {inner}
-                    </a>
-                  ) : (
-                    <div key={channel.label} className={shared}>
-                      {inner}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </Reveal>
-        </div>
       </div>
     </section>
   );

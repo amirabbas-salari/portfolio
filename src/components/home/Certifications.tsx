@@ -12,15 +12,19 @@ export default function Certifications() {
       id="certifications"
       className="relative border-t border-line/70 py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <Reveal>
           <SectionHeading
-            index="04"
-            title="Certifications"
-            hint={`// ${certifications.length} records`}
+            kicker="Certifications"
+            title="Proof of Work"
+            aside={
+              <span className="label">
+                {`// ${certifications.length} records`}
+              </span>
+            }
           />
 
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-mist/70">
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-cream-3">
             Certifications and training that have contributed to my technical
             foundation and continuous growth.
           </p>

@@ -32,10 +32,10 @@ const links = [
 
 export default function SocialRail() {
   return (
-    <aside className="fixed left-6 top-0 z-30 hidden h-screen w-6 flex-col items-center 2xl:flex">
-      <span className="h-28 w-px bg-line" />
+    <aside className="fixed left-7 top-0 z-30 hidden h-screen w-6 flex-col items-center 2xl:flex">
+      <span className="h-32 w-px bg-line" />
 
-      <div className="mt-4 flex flex-col items-center gap-4">
+      <div className="mt-5 flex flex-col items-center gap-5">
         {links.map((link) => (
           <a
             key={link.label}
@@ -43,19 +43,19 @@ export default function SocialRail() {
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noopener noreferrer" : undefined}
             aria-label={link.label}
-            className="group relative flex h-8 w-8 items-center justify-center text-dim transition-colors duration-300 hover:text-cyan"
+            className="group relative flex h-8 w-8 items-center justify-center text-cream-3 transition-colors duration-300 hover:text-sepia"
           >
             {link.icon}
 
-            <span className="absolute left-1/2 top-1/2 h-8 w-8 -translate-x-1/2 -translate-y-1/2 border border-transparent transition-colors duration-300 group-hover:border-cyan/40" />
+            <span className="absolute -left-[7px] top-1/2 h-8 w-px -translate-y-1/2 bg-transparent transition-colors duration-300 group-hover:bg-cream/40" />
           </a>
         ))}
       </div>
 
-      <span className="mt-4 h-24 w-px bg-line" />
+      <span className="mt-5 h-28 w-px bg-line" />
 
       <span
-        className="label mt-6 text-dim"
+        className="label mt-7 text-cream-3"
         style={{ writingMode: "vertical-rl" }}
       >
         {profile.shortName} · {new Date().getFullYear()}

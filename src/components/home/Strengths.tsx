@@ -11,33 +11,37 @@ export default function Strengths() {
       id="strengths"
       className="relative border-t border-line/70 py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <SectionHeading index="06" title="Strengths" hint="// operating mode" />
+          <SectionHeading
+            kicker="Strengths"
+            title="How I Work"
+            aside={<span className="label">{"// Operating mode"}</span>}
+          />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-px bg-line/70 md:grid-cols-3">
           {strengths.map((strength, index) => {
             const Icon = strength.icon;
 
             return (
-              <Reveal key={strength.number} delay={index * 0.08}>
-                <article className="hud hud-quiet brackets group relative h-full p-7 transition-transform duration-300 hover:-translate-y-1">
+              <Reveal key={strength.number} delay={index * 0.06}>
+                <article className="group relative h-full bg-ink p-8 transition-colors duration-300 hover:bg-ink-2">
                   <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center notch-sm border border-cyan/30 bg-cyan/[0.07] text-cyan">
+                    <span className="flex h-11 w-11 items-center justify-center border border-cream/20 text-sepia transition-colors duration-300 group-hover:border-cream/45">
                       <Icon size={17} strokeWidth={1.7} />
                     </span>
 
-                    <span className="label text-cyan/60">
+                    <span className="label text-cream-3">
                       {strength.number}
                     </span>
                   </div>
 
-                  <h3 className="mt-7 font-display text-lg font-semibold tracking-tight text-chalk transition-colors duration-300 group-hover:text-cyan">
+                  <h3 className="mt-8 font-display text-[21px] font-semibold leading-snug tracking-[-0.015em] text-cream">
                     {strength.title}
                   </h3>
 
-                  <p className="mt-4 text-[13px] leading-6 text-mist/70">
+                  <p className="mt-4 text-[13.5px] leading-7 text-cream-3">
                     {strength.description}
                   </p>
                 </article>

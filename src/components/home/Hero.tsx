@@ -13,9 +13,25 @@ import { certifications } from "@/data/certifications";
 
 const stats = [
   { value: String(projects.length).padStart(2, "0"), label: "Builds shipped" },
-  { value: String(skillCategories.length).padStart(2, "0"), label: "Skill domains" },
-  { value: String(certifications.length).padStart(2, "0"), label: "Certifications" },
+  {
+    value: String(skillCategories.length).padStart(2, "0"),
+    label: "Skill domains",
+  },
+  {
+    value: String(certifications.length).padStart(2, "0"),
+    label: "Certifications",
+  },
 ];
+
+/** Typographic word stack, straight off the poster. */
+const wordStack = [
+  { word: "Better", size: "text-3xl sm:text-4xl", tone: "text-cream-2" },
+  { word: "Code", size: "text-2xl sm:text-3xl", tone: "text-cream-3" },
+  { word: "Bigger", size: "text-4xl sm:text-5xl", tone: "text-cream" },
+  { word: "Dreams", size: "text-3xl sm:text-4xl", tone: "text-sepia" },
+];
+
+const focusStack = ["Python", "Django", "React", "AI & CV"];
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
@@ -29,171 +45,163 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pb-28 pt-32 sm:pt-36 lg:pb-32"
+      className="relative overflow-hidden pb-24 pt-32 sm:pt-36 lg:pb-28"
     >
       {/* Atmosphere */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-cyan/[0.07] blur-[150px]" />
+        <div className="absolute left-1/2 top-0 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-sepia/[0.12] blur-[150px]" />
 
-        <div className="absolute bottom-24 left-1/2 h-[300px] w-[760px] -translate-x-1/2 rounded-full bg-magenta/[0.07] blur-[140px]" />
+        <div className="absolute bottom-24 left-1/2 h-[300px] w-[760px] -translate-x-1/2 rounded-full bg-cream/[0.05] blur-[140px]" />
 
         <div className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(100%_70%_at_50%_20%,#000,transparent_75%)]" />
 
-        <div className="scanlines absolute inset-0 opacity-30" />
-
-        <div className="grid-floor" />
-
-        <div className="absolute inset-x-0 bottom-[26%] h-px bg-gradient-to-r from-transparent via-cyan/25 to-transparent" />
+        <div className="absolute inset-x-0 bottom-[22%] h-px bg-gradient-to-r from-transparent via-cream/15 to-transparent" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.08fr_0.92fr]">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="grid items-start gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:gap-16">
           {/* ------------------ Text ------------------ */}
           <div className="relative z-10">
             <motion.div {...rise(0.05)} className="flex items-center gap-3">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan" />
-              </span>
+              <span className="h-1.5 w-1.5 bg-sepia" />
 
-              <span className="label text-cyan/80">
-                Available for opportunities
-              </span>
+              <span className="label">Available for opportunities</span>
 
-              <span className="h-px w-10 bg-gradient-to-r from-cyan/50 to-transparent" />
+              <span className="h-px w-10 bg-gradient-to-r from-sepia/70 to-transparent" />
             </motion.div>
 
-            <motion.p {...rise(0.1)} className="label mt-8 text-dim">
-              {`// ${profile.role}`}
+            <motion.p
+              {...rise(0.1)}
+              className="mt-9 font-mono text-[11px] uppercase tracking-[0.26em] text-cream-3"
+            >
+              Hello, I&apos;m
             </motion.p>
 
             <motion.h1
               {...rise(0.15)}
-              className="mt-5 font-display text-[clamp(2.6rem,7vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.035em]"
+              className="mt-4 font-display text-[clamp(3rem,8.4vw,5.6rem)] font-semibold leading-[0.9] tracking-[-0.025em]"
             >
-              <span className="block text-chalk">Amir Abbas</span>
+              <span className="block text-cream">Amir Abbas</span>
 
-              <span className="chrome-text block">Salari Nasab</span>
+              <span className="block text-sepia">Salari</span>
             </motion.h1>
 
             <motion.p
               {...rise(0.22)}
-              className="mt-7 max-w-xl text-base leading-8 text-mist/80"
+              className="mt-7 font-mono text-[11.5px] uppercase tracking-[0.22em] text-cream-2"
             >
-              {profile.tagline} Turning complex problems into practical,
-              maintainable software — from real-time vision systems to
-              production APIs.
+              Full-Stack Developer &amp; AI Enthusiast
+            </motion.p>
+
+            <motion.p
+              {...rise(0.26)}
+              className="mt-8 max-w-xl text-[15px] leading-8 text-cream-3"
+            >
+              I build modern web applications, work with AI and computer
+              vision, and enjoy turning ideas into real products.
             </motion.p>
 
             <motion.div
-              {...rise(0.3)}
-              className="mt-10 flex flex-wrap items-center gap-3"
+              {...rise(0.32)}
+              className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3"
             >
               <Link
-                href="#contact"
-                className="group notch-sm inline-flex items-center gap-2 border border-cyan/45 bg-cyan/10 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-all duration-300 hover:border-cyan hover:bg-cyan/20 hover:shadow-[0_0_34px_-8px_rgba(53,230,255,0.65)]"
+                href="#projects"
+                className="group inline-flex items-center gap-2 border-b border-cream/40 pb-1 font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:border-sepia hover:text-sepia"
               >
-                Start a project
+                View My Projects
                 <ArrowRight
-                  size={14}
+                  size={13}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
 
               <Link
                 href="/resume"
-                className="notch-sm inline-flex items-center gap-2 border border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-all duration-300 hover:border-cyan/45 hover:text-chalk"
+                className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream-3 transition-colors duration-300 hover:text-cream"
               >
                 One-screen résumé
-              </Link>
-
-              <Link
-                href="#projects"
-                className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim transition-colors duration-300 hover:text-chalk"
-              >
-                View builds
               </Link>
             </motion.div>
 
             {/* Stats */}
             <motion.div
-              {...rise(0.38)}
-              className="mt-14 grid max-w-lg grid-cols-3 gap-4 border-t border-line/70 pt-8"
+              {...rise(0.4)}
+              className="mt-14 grid max-w-lg grid-cols-3 gap-4 border-t border-line/80 pt-8"
             >
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="chrome-text font-display text-3xl font-bold tracking-tight">
+                  <p className="font-display text-3xl font-semibold tracking-tight text-cream">
                     {stat.value}
                   </p>
 
-                  <p className="label mt-2 text-dim">{stat.label}</p>
+                  <p className="label mt-2.5 text-cream-3">{stat.label}</p>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* ------------------ Portrait ------------------ */}
-          <motion.div
-            {...rise(0.25)}
-            className="relative mx-auto w-full max-w-[420px]"
-          >
-            <div className="hud-lg relative p-2">
-              <div className="relative aspect-[4/5] overflow-hidden bg-panel">
-                <Image
-                  src={profile.image}
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 420px"
-                  className="duotone object-cover object-top"
-                />
-
-                <span className="duotone-tint" />
-                <span className="duotone-tint-strong" />
-
-                <div className="scanlines absolute inset-0" />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/15 to-transparent" />
-
-                {/* Index badge */}
-                <span className="label absolute left-4 top-4 border border-cyan/30 bg-void/70 px-2.5 py-2 text-cyan/80 backdrop-blur-sm">
-                  Fig. 01 / {profile.shortName}
-                </span>
-
-                {/* Corner brackets */}
-                <span className="brackets absolute inset-0" />
-              </div>
-            </div>
-
-            {/* Readout panel */}
-            <div className="hud-sm relative mt-4 p-5">
-              <div className="flex items-center justify-between">
-                <p className="label text-cyan/70">[ Identity ]</p>
-
-                <span className="label text-dim">SYS · OK</span>
+          {/* ------------------ Portrait + word stack ------------------ */}
+          <motion.div {...rise(0.25)} className="relative">
+            <div className="flex flex-col gap-10 lg:items-end">
+              {/* Word stack */}
+              <div className="flex flex-col items-start gap-1 lg:items-end">
+                {wordStack.map((item) => (
+                  <span
+                    key={item.word}
+                    className={`font-display font-semibold leading-[1.1] tracking-[-0.02em] ${item.size} ${item.tone}`}
+                  >
+                    {item.word}
+                  </span>
+                ))}
               </div>
 
-              <div className="mt-4 space-y-3">
-                <div className="flex items-baseline justify-between gap-4 border-b border-line/60 pb-3">
-                  <span className="label text-dim">Role</span>
-                  <span className="text-right text-sm text-chalk">
-                    {profile.role}
-                  </span>
+              {/* Portrait */}
+              <div className="relative w-full max-w-[420px]">
+                <div className="relative border border-cream/20 p-2">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-ink-2">
+                    <Image
+                      src={profile.image}
+                      alt={profile.name}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 90vw, 420px"
+                      className="sepia-img object-cover object-top"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
+
+                    <span className="label absolute left-4 top-4 bg-ink/70 px-3 py-2 backdrop-blur-sm">
+                      Fig. 01 / A.A.S
+                    </span>
+
+                    <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4">
+                      <span className="font-display text-xl font-semibold tracking-tight text-cream">
+                        {profile.shortName}
+                      </span>
+
+                      <span className="label flex items-center gap-1.5 text-cream-2">
+                        <MapPin size={11} />
+                        {profile.location}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-baseline justify-between gap-4 border-b border-line/60 pb-3">
-                  <span className="label text-dim">Focus</span>
-                  <span className="text-right text-sm text-chalk">
-                    Vision · LLM · Backend
-                  </span>
-                </div>
+                {/* Focus list */}
+                <div className="mt-px border border-cream/12">
+                  {focusStack.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center justify-between border-b border-line/60 px-5 py-3 last:border-b-0"
+                    >
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-cream-2">
+                        {item}
+                      </span>
 
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="label text-dim">Base</span>
-                  <span className="flex items-center gap-2 text-sm text-chalk">
-                    <MapPin size={12} className="text-cyan/70" />
-                    {profile.location}
-                  </span>
+                      <span className="h-1 w-1 bg-sepia" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

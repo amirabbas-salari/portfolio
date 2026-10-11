@@ -13,13 +13,13 @@ interface ActionLinkProps {
 }
 
 const base =
-  "group relative inline-flex items-center justify-center gap-2 notch-sm px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] transition-all duration-300";
+  "group inline-flex items-center justify-center gap-2 border px-6 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.2em] transition-all duration-300";
 
 const variants: Record<Variant, string> = {
   primary:
-    "border border-cyan/45 bg-cyan/10 text-chalk hover:border-cyan hover:bg-cyan/20 hover:shadow-[0_0_34px_-8px_rgba(53,230,255,0.65)]",
+    "border-cream/35 text-cream hover:border-cream hover:bg-cream hover:text-ink",
   ghost:
-    "border border-line text-mist hover:border-cyan/45 hover:text-chalk hover:shadow-[0_0_28px_-12px_rgba(53,230,255,0.5)]",
+    "border-line text-cream-2 hover:border-cream/45 hover:text-cream",
 };
 
 export default function ActionLink({

@@ -41,9 +41,7 @@ export default function ResumeScreen() {
   );
 
   const measured = viewport !== SERVER_SNAPSHOT;
-  const [width, height] = measured
-    ? viewport.split("|").map(Number)
-    : [0, 0];
+  const [width, height] = measured ? viewport.split("|").map(Number) : [0, 0];
 
   const scale = measured
     ? Math.min(width / DESIGN_WIDTH, height / DESIGN_HEIGHT)
@@ -54,9 +52,9 @@ export default function ResumeScreen() {
   const useSheet = measured && scale >= MIN_SHEET_SCALE;
 
   return (
-    <main className="resume-screen relative h-[100dvh] w-full overflow-hidden bg-void">
+    <main className="resume-screen relative h-[100dvh] w-full overflow-hidden bg-ink">
       {/* Viewport backdrop — fills the letterbox area around the sheet */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(53,230,255,0.08),transparent_55%),radial-gradient(110%_110%_at_100%_100%,rgba(255,61,154,0.07),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(139,111,78,0.16),transparent_55%),radial-gradient(110%_110%_at_100%_100%,rgba(216,197,165,0.07),transparent_55%)]" />
 
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(110%_80%_at_50%_50%,#000,transparent_80%)]" />
 

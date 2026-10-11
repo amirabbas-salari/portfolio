@@ -3,12 +3,9 @@ import "./globals.css";
 
 import PersonSchema from "@/components/seo/PersonSchema";
 import Backdrop from "@/components/ui/Backdrop";
+import PosterFrame from "@/components/ui/PosterFrame";
 
-import {
-  Inter,
-  JetBrains_Mono,
-  Space_Grotesk,
-} from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,11 +13,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -105,9 +101,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} bg-void font-sans text-mist antialiased`}
+        className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} bg-ink font-sans text-cream-2 antialiased`}
       >
         <PersonSchema />
+
+        <PosterFrame />
 
         <Backdrop />
 

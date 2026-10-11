@@ -19,15 +19,15 @@ export default function Home() {
 
       <Hero />
 
+      <Projects />
+
       <About />
 
       <Skills />
 
-      <Projects />
+      <Education />
 
       <Certifications />
-
-      <Education />
 
       <Strengths />
 

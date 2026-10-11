@@ -19,7 +19,7 @@ import { languages } from "@/data/languages";
 import { strengths } from "@/data/strengths";
 
 /* ------------------------------------------------------------------ */
-/*  Content                                                             */
+/* Content */
 /* ------------------------------------------------------------------ */
 
 const statementLead =
@@ -29,7 +29,12 @@ const statementTail =
   "and full-stack products with Python, PyTorch and Django.";
 
 const contactItems = [
-  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: Mail },
+  {
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    icon: Mail,
+  },
   {
     label: "Phone",
     value: profile.phone,
@@ -46,7 +51,7 @@ const contactItems = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Frame decoration                                                    */
+/* Frame decoration */
 /* ------------------------------------------------------------------ */
 
 function FrameCorners() {
@@ -62,21 +67,21 @@ function FrameCorners() {
       {corners.map((position) => (
         <span
           key={position}
-          className={`pointer-events-none absolute h-[26px] w-[26px] border-cyan/45 ${position}`}
+          className={`pointer-events-none absolute h-[26px] w-[26px] border-cream/25 ${position}`}
         />
       ))}
 
       {/* Edge markers */}
-      <span className="pointer-events-none absolute left-1/2 top-[22px] h-[3px] w-[3px] -translate-x-1/2 bg-cyan/60" />
-      <span className="pointer-events-none absolute bottom-[22px] left-1/2 h-[3px] w-[3px] -translate-x-1/2 bg-cyan/60" />
-      <span className="pointer-events-none absolute left-[22px] top-1/2 h-[3px] w-[3px] -translate-y-1/2 bg-cyan/60" />
-      <span className="pointer-events-none absolute right-[22px] top-1/2 h-[3px] w-[3px] -translate-y-1/2 bg-cyan/60" />
+      <span className="pointer-events-none absolute left-1/2 top-[22px] h-[3px] w-[3px] -translate-x-1/2 bg-sepia" />
+      <span className="pointer-events-none absolute bottom-[22px] left-1/2 h-[3px] w-[3px] -translate-x-1/2 bg-sepia" />
+      <span className="pointer-events-none absolute left-[22px] top-1/2 h-[3px] w-[3px] -translate-y-1/2 bg-sepia" />
+      <span className="pointer-events-none absolute right-[22px] top-1/2 h-[3px] w-[3px] -translate-y-1/2 bg-sepia" />
     </>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  Sheet — authored at 1600 x 930 and scaled to fit the viewport       */
+/* Sheet — authored at 1600 x 930 and scaled to fit the viewport */
 /* ------------------------------------------------------------------ */
 
 export default function ResumeSheet() {
@@ -91,12 +96,12 @@ export default function ResumeSheet() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="relative h-[930px] w-[1600px] overflow-hidden bg-void font-sans">
+    <div className="relative h-[930px] w-[1600px] overflow-hidden bg-ink font-sans">
       {/* Ambient light */}
-      <div className="drift pointer-events-none absolute -left-52 -top-56 h-[640px] w-[640px] rounded-full bg-cyan/[0.11] blur-[130px]" />
+      <div className="drift pointer-events-none absolute -left-52 -top-56 h-[640px] w-[640px] rounded-full bg-sepia/[0.11] blur-[130px]" />
 
       <div
-        className="drift pointer-events-none absolute -bottom-64 -right-40 h-[620px] w-[760px] rounded-full bg-magenta/[0.09] blur-[140px]"
+        className="drift pointer-events-none absolute -bottom-64 -right-40 h-[620px] w-[760px] rounded-full bg-sepia-soft/[0.09] blur-[140px]"
         style={{ animationDelay: "-7s" }}
       />
 
@@ -104,9 +109,9 @@ export default function ResumeSheet() {
 
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(110%_80%_at_50%_0%,#000,transparent_78%)]" />
 
-      <div className="resume-grain pointer-events-none absolute inset-0" />
+      <div className="paper-grain pointer-events-none absolute inset-0" />
 
-      <div className="scanlines pointer-events-none absolute inset-0 opacity-25" />
+      <div className="tech-grid pointer-events-none absolute inset-0 opacity-25" />
 
       {/* Hairline frame */}
       <div className="pointer-events-none absolute inset-[22px] border border-line/90" />
@@ -122,31 +127,31 @@ export default function ResumeSheet() {
         >
           <div className="flex items-center gap-5">
             {/* Monogram */}
-            <div className="relative h-[56px] w-[56px] shrink-0 notch-sm border border-cyan/40 bg-cyan/[0.07]">
-              <span className="absolute inset-0 flex items-center justify-center font-display text-[17px] font-bold tracking-[0.04em] text-chalk">
+            <div className="relative h-[56px] w-[56px] shrink-0 border border-cream/25 bg-sepia/[0.07]">
+              <span className="absolute inset-0 flex items-center justify-center font-display text-[17px] font-bold tracking-[0.04em] text-cream">
                 AS
               </span>
 
-              <span className="absolute -right-px -top-px h-[7px] w-[7px] bg-cyan" />
+              <span className="absolute -right-px -top-px h-[7px] w-[7px] bg-sepia" />
             </div>
 
             <div>
-              <h1 className="font-display text-[26px] font-bold leading-none tracking-[-0.02em] text-chalk">
+              <h1 className="font-display text-[26px] font-bold leading-none tracking-[-0.02em] text-cream">
                 {profile.name}
               </h1>
 
               <div className="mt-[10px] flex items-center gap-2.5">
-                <span className="h-px w-7 bg-cyan/60" />
+                <span className="h-px w-7 bg-sepia" />
 
-                <p className="font-mono text-[10.5px] font-medium uppercase leading-none tracking-[0.22em] text-cyan">
+                <p className="font-mono text-[10.5px] font-medium uppercase leading-none tracking-[0.22em] text-sepia">
                   {profile.role}
                 </p>
 
-                <span className="font-mono text-[10.5px] leading-none text-dim">
+                <span className="font-mono text-[10.5px] leading-none text-cream-3">
                   /
                 </span>
 
-                <p className="font-mono text-[10.5px] font-medium uppercase leading-none tracking-[0.22em] text-mist">
+                <p className="font-mono text-[10.5px] font-medium uppercase leading-none tracking-[0.22em] text-cream-2">
                   Full-Stack Engineer
                 </p>
               </div>
@@ -155,13 +160,13 @@ export default function ResumeSheet() {
 
           <div className="flex items-center gap-3.5">
             {/* Status */}
-            <div className="flex items-center gap-2 rounded-full border border-cyan/25 bg-cyan/[0.07] px-3.5 py-[7px]">
+            <div className="flex items-center gap-2 rounded-full border border-cream/25 bg-sepia/[0.07] px-3.5 py-[7px]">
               <span className="relative flex h-[5px] w-[5px]">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-70" />
-                <span className="relative inline-flex h-[5px] w-[5px] rounded-full bg-cyan" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sepia opacity-70" />
+                <span className="relative inline-flex h-[5px] w-[5px] rounded-full bg-sepia" />
               </span>
 
-              <span className="font-mono text-[9.5px] font-medium uppercase tracking-[0.2em] text-chalk">
+              <span className="font-mono text-[9.5px] font-medium uppercase tracking-[0.2em] text-cream">
                 Open to opportunities
               </span>
             </div>
@@ -171,7 +176,7 @@ export default function ResumeSheet() {
               href="/Amir-Abbas-Salari-Nasab-CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 border border-line px-3.5 py-[7px] font-mono text-[9.5px] font-medium uppercase tracking-[0.18em] text-mist transition-colors duration-300 hover:border-cyan/50 hover:text-chalk"
+              className="group flex items-center gap-2 border border-line px-3.5 py-[7px] font-mono text-[9.5px] font-medium uppercase tracking-[0.18em] text-cream-2 transition-colors duration-300 hover:border-cream/25 hover:text-cream"
             >
               <Download size={11} />
               CV / PDF
@@ -179,7 +184,7 @@ export default function ResumeSheet() {
 
             <Link
               href="/"
-              className="group flex items-center gap-1.5 font-mono text-[9.5px] font-medium uppercase tracking-[0.18em] text-dim transition-colors duration-300 hover:text-chalk"
+              className="group flex items-center gap-1.5 font-mono text-[9.5px] font-medium uppercase tracking-[0.18em] text-cream-3 transition-colors duration-300 hover:text-cream"
             >
               Portfolio
               <ArrowUpRight
@@ -197,7 +202,7 @@ export default function ResumeSheet() {
           <span className="pointer-events-none absolute -top-2 bottom-0 left-[1012px] w-px bg-line/70" />
 
           {/* ---------------------------------------------------- */}
-          {/* Left column — identity                                */}
+          {/* Left column — identity */}
           {/* ---------------------------------------------------- */}
           <motion.aside
             {...rise(0.1)}
@@ -206,38 +211,35 @@ export default function ResumeSheet() {
             {/* Portrait */}
             <div className="relative h-[318px] w-full">
               {/* Offset frame */}
-              <span className="absolute left-[16px] top-[18px] h-[292px] w-[286px] border border-cyan/25" />
+              <span className="absolute left-[16px] top-[18px] h-[292px] w-[286px] border border-cream/25" />
 
               {/* Photo */}
-              <div className="absolute left-0 top-0 h-[292px] w-[286px] overflow-hidden bg-panel">
+              <div className="absolute left-0 top-0 h-[292px] w-[286px] overflow-hidden bg-ink-2">
                 <Image
                   src={profile.image}
                   alt={profile.name}
                   fill
                   priority
                   sizes="286px"
-                  className="duotone object-cover object-top"
+                  className="sepia-img object-cover object-top"
                 />
 
-                <span className="duotone-tint" />
-                <span className="duotone-tint-strong" />
+                <div className="tech-grid absolute inset-0" />
 
-                <div className="scanlines absolute inset-0" />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent" />
               </div>
 
               {/* Crop marks */}
-              <span className="absolute -left-[6px] -top-[6px] h-3 w-3 border-l border-t border-white/25" />
-              <span className="absolute -top-[6px] right-[22px] h-3 w-3 border-r border-t border-white/25" />
-              <span className="absolute -left-[6px] bottom-[2px] h-3 w-3 border-b border-l border-white/25" />
-              <span className="absolute bottom-[2px] right-[22px] h-3 w-3 border-b border-r border-white/25" />
+              <span className="absolute -left-[6px] -top-[6px] h-3 w-3 border-l border-t border-cream/25" />
+              <span className="absolute -top-[6px] right-[22px] h-3 w-3 border-r border-t border-cream/25" />
+              <span className="absolute -left-[6px] bottom-[2px] h-3 w-3 border-b border-l border-cream/25" />
+              <span className="absolute bottom-[2px] right-[22px] h-3 w-3 border-b border-r border-cream/25" />
             </div>
 
             {/* Caption */}
             <div className="mt-1 flex items-center justify-end gap-2">
-              <span className="h-px w-8 bg-cyan/50" />
-              <span className="font-mono text-[8.5px] uppercase tracking-[0.3em] text-dim">
+              <span className="h-px w-8 bg-sepia" />
+              <span className="font-mono text-[8.5px] uppercase tracking-[0.3em] text-cream-3">
                 Fig. 01 — {profile.shortName}
               </span>
             </div>
@@ -254,27 +256,29 @@ export default function ResumeSheet() {
                     <>
                       <Icon
                         size={12}
-                        className="shrink-0 text-cyan/70 transition-colors duration-300 group-hover:text-cyan"
+                        className="shrink-0 text-sepia transition-colors duration-300 group-hover:text-sepia"
                       />
 
-                      <span className="w-[42px] shrink-0 font-mono text-[8.5px] uppercase tracking-[0.18em] text-dim">
+                      <span className="w-[42px] shrink-0 font-mono text-[8.5px] uppercase tracking-[0.18em] text-cream-3">
                         {item.label}
                       </span>
 
-                      <span className="truncate text-[11px] leading-[15px] text-mist transition-colors duration-300 group-hover:text-chalk">
+                      <span className="truncate text-[11px] leading-[15px] text-cream-2 transition-colors duration-300 group-hover:text-cream">
                         {item.value}
                       </span>
                     </>
                   );
 
                   const shared =
-                    "group flex items-center gap-3 border-b border-line/60 py-[8px] transition-colors duration-300 hover:border-cyan/30";
+                    "group flex items-center gap-3 border-b border-line/60 py-[8px] transition-colors duration-300 hover:border-cream/25";
 
                   return item.href ? (
                     <a
                       key={item.label}
                       href={item.href}
-                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      target={
+                        item.href.startsWith("http") ? "_blank" : undefined
+                      }
                       rel={
                         item.href.startsWith("http")
                           ? "noopener noreferrer"
@@ -303,7 +307,7 @@ export default function ResumeSheet() {
                     key={language.name}
                     className="flex items-center justify-between"
                   >
-                    <span className="text-[11px] leading-[15px] text-mist">
+                    <span className="text-[11px] leading-[15px] text-cream-2">
                       {language.name}
                     </span>
 
@@ -314,14 +318,14 @@ export default function ResumeSheet() {
                             key={step}
                             className={`h-[3px] w-[7px] ${
                               step <= language.proficiency
-                                ? "bg-cyan/80"
-                                : "bg-white/[0.08]"
+                                ? "bg-sepia"
+                                : "bg-cream/10"
                             }`}
                           />
                         ))}
                       </div>
 
-                      <span className="w-[92px] text-right font-mono text-[8.5px] uppercase tracking-[0.12em] text-dim">
+                      <span className="w-[92px] text-right font-mono text-[8.5px] uppercase tracking-[0.12em] text-cream-3">
                         {language.level.split(" ")[0]}
                       </span>
                     </div>
@@ -332,7 +336,7 @@ export default function ResumeSheet() {
           </motion.aside>
 
           {/* ---------------------------------------------------- */}
-          {/* Middle column — profile, work, education             */}
+          {/* Middle column — profile, work, education */}
           {/* ---------------------------------------------------- */}
           <motion.section
             {...rise(0.16)}
@@ -342,8 +346,8 @@ export default function ResumeSheet() {
             <div>
               <SectionHead index="03" title="Profile" />
 
-              <p className="mt-3 font-display text-[18px] font-medium leading-[27px] tracking-[-0.01em] text-mist">
-                <span className="text-chalk">{statementLead}</span>{" "}
+              <p className="mt-3 font-display text-[18px] font-medium leading-[27px] tracking-[-0.01em] text-cream-2">
+                <span className="text-cream">{statementLead}</span>{" "}
                 {statementTail}
               </p>
             </div>
@@ -361,38 +365,38 @@ export default function ResumeSheet() {
                   <Link
                     key={project.slug}
                     href={`/projects/${project.slug}`}
-                    className="group relative flex items-center gap-3 border-b border-line/60 py-[6px] transition-colors duration-300 hover:border-cyan/30"
+                    className="group relative flex items-center gap-3 border-b border-line/60 py-[6px] transition-colors duration-300 hover:border-cream/25"
                   >
-                    <span className="absolute left-0 top-1/2 h-0 w-[2px] -translate-y-1/2 bg-cyan transition-all duration-300 group-hover:h-[26px]" />
+                    <span className="absolute left-0 top-1/2 h-0 w-[2px] -translate-y-1/2 bg-sepia transition-all duration-300 group-hover:h-[26px]" />
 
-                    <span className="w-[26px] shrink-0 font-mono text-[9.5px] text-cyan/50 transition-colors duration-300 group-hover:text-cyan">
+                    <span className="w-[26px] shrink-0 font-mono text-[9.5px] text-sepia transition-colors duration-300 group-hover:text-sepia">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-baseline gap-2.5">
-                        <h3 className="font-display text-[13.5px] font-semibold leading-[18px] text-chalk transition-colors duration-300 group-hover:text-cyan">
+                        <h3 className="font-display text-[13.5px] font-semibold leading-[18px] text-cream transition-colors duration-300 group-hover:text-sepia">
                           {project.title}
                         </h3>
 
                         <span className="h-px flex-1 bg-line/70" />
                       </div>
 
-                      <p className="mt-[3px] truncate text-[10.5px] leading-[15px] text-mist/70">
+                      <p className="mt-[3px] truncate text-[10.5px] leading-[15px] text-cream-3">
                         {project.subtitle}
-                        <span className="px-[6px] text-dim">/</span>
-                        <span className="text-dim">
+                        <span className="px-[6px] text-cream-3">/</span>
+                        <span className="text-cream-3">
                           {project.technologies.slice(0, 3).join(" · ")}
                         </span>
                       </p>
                     </div>
 
-                    <span className="flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-dim">
+                    <span className="flex shrink-0 items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-cream-3">
                       <span
                         className={`h-[5px] w-[5px] rounded-full ${
                           project.status === "Completed"
-                            ? "bg-mist"
-                            : "bg-magenta"
+                            ? "bg-cream-2"
+                            : "bg-sepia-soft"
                         }`}
                       />
                       {project.status}
@@ -405,33 +409,36 @@ export default function ResumeSheet() {
             {/* Education + Certifications */}
             <div className="mt-4 grid min-h-0 flex-1 grid-cols-[300px_1fr] gap-5">
               {/* Education */}
-              <div className="hud hud-sm hud-quiet flex flex-col p-4">
+              <div className="border border-line bg-ink-2/50 flex flex-col p-4">
                 <SectionHead index="05" title="Education" />
 
                 {education.map((item) => (
-                  <div key={item.degree} className="mt-3.5 flex flex-1 flex-col">
-                    <h3 className="font-display text-[12.5px] font-semibold leading-[18px] text-chalk">
+                  <div
+                    key={item.degree}
+                    className="mt-3.5 flex flex-1 flex-col"
+                  >
+                    <h3 className="font-display text-[12.5px] font-semibold leading-[18px] text-cream">
                       {item.degree}
                     </h3>
 
-                    <p className="mt-1.5 text-[10.5px] leading-[15px] text-mist/70">
+                    <p className="mt-1.5 text-[10.5px] leading-[15px] text-cream-3">
                       {item.institution}
                     </p>
 
-                    <div className="mt-3 flex items-center gap-1.5 font-mono text-[8.5px] uppercase tracking-[0.14em] text-dim">
-                      <MapPin size={9} className="text-cyan/70" />
+                    <div className="mt-3 flex items-center gap-1.5 font-mono text-[8.5px] uppercase tracking-[0.14em] text-cream-3">
+                      <MapPin size={9} className="text-sepia" />
                       {item.location}
                     </div>
 
                     {/* Duration */}
                     <div className="mt-auto pt-6">
-                      <div className="flex items-center justify-between font-mono text-[8.5px] uppercase tracking-[0.16em] text-dim">
+                      <div className="flex items-center justify-between font-mono text-[8.5px] uppercase tracking-[0.16em] text-cream-3">
                         <span>{item.period.split(" — ")[0]}</span>
                         <span>{item.period.split(" — ")[1]}</span>
                       </div>
 
-                      <div className="mt-2 h-[3px] w-full bg-white/[0.06]">
-                        <div className="h-full w-[82%] bg-gradient-to-r from-cyan via-violet/70 to-magenta/60" />
+                      <div className="mt-2 h-[3px] w-full bg-cream/10">
+                        <div className="h-full w-[82%] bg-gradient-to-r from-sepia via-sepia/70 to-cream/50" />
                       </div>
                     </div>
                   </div>
@@ -444,8 +451,8 @@ export default function ResumeSheet() {
                       key={index}
                       className={`w-px ${
                         index % 6 === 0
-                          ? "h-[10px] bg-cyan/40"
-                          : "h-[4px] bg-white/[0.09]"
+                          ? "h-[10px] bg-sepia"
+                          : "h-[4px] bg-cream/10"
                       }`}
                     />
                   ))}
@@ -453,7 +460,7 @@ export default function ResumeSheet() {
               </div>
 
               {/* Certifications */}
-              <div className="hud hud-sm hud-quiet flex flex-col p-4">
+              <div className="border border-line bg-ink-2/50 flex flex-col p-4">
                 <SectionHead
                   index="06"
                   title="Certifications"
@@ -463,16 +470,16 @@ export default function ResumeSheet() {
                 <div className="mt-3 grid grid-cols-2 gap-x-5 gap-y-[6px]">
                   {certifications.map((certificate, index) => (
                     <div key={certificate.title} className="flex gap-2">
-                      <span className="mt-[2px] shrink-0 font-mono text-[8.5px] text-cyan/50">
+                      <span className="mt-[2px] shrink-0 font-mono text-[8.5px] text-sepia">
                         {String(index + 1).padStart(2, "0")}
                       </span>
 
                       <div className="min-w-0">
-                        <p className="text-[10px] font-medium leading-[13px] text-chalk">
+                        <p className="text-[10px] font-medium leading-[13px] text-cream">
                           {certificate.title}
                         </p>
 
-                        <p className="mt-[2px] text-[9px] leading-[12px] text-dim">
+                        <p className="mt-[2px] text-[9px] leading-[12px] text-cream-3">
                           {certificate.issuer}
                         </p>
                       </div>
@@ -484,7 +491,7 @@ export default function ResumeSheet() {
           </motion.section>
 
           {/* ---------------------------------------------------- */}
-          {/* Right column — capabilities + strengths              */}
+          {/* Right column — capabilities + strengths */}
           {/* ---------------------------------------------------- */}
           <motion.section
             {...rise(0.22)}
@@ -501,21 +508,23 @@ export default function ResumeSheet() {
               <div className="mt-3 flex flex-col gap-[11px]">
                 {skillCategories.map((category) => (
                   <div key={category.title}>
-                    <p className="font-mono text-[9px] font-medium uppercase leading-[11px] tracking-[0.2em] text-cyan/60">
+                    <p className="font-mono text-[9px] font-medium uppercase leading-[11px] tracking-[0.2em] text-sepia">
                       {category.title}
                     </p>
 
-                    <p className="mt-[3px] text-[11px] leading-[15px] text-mist/80">
+                    <p className="mt-[3px] text-[11px] leading-[15px] text-cream-3">
                       {category.skills.map((skill, index) => (
                         <span key={skill}>
                           <span
-                            className={index < 2 ? "text-chalk" : "text-mist/80"}
+                            className={
+                              index < 2 ? "text-cream" : "text-cream-3"
+                            }
                           >
                             {skill}
                           </span>
 
                           {index < category.skills.length - 1 ? (
-                            <span className="px-[5px] text-dim">/</span>
+                            <span className="px-[5px] text-cream-3">/</span>
                           ) : null}
                         </span>
                       ))}
@@ -539,14 +548,14 @@ export default function ResumeSheet() {
                       className="border-t border-line pt-2.5"
                     >
                       <div className="flex items-center gap-1.5">
-                        <Icon size={11} className="text-cyan/70" />
+                        <Icon size={11} className="text-sepia" />
 
-                        <span className="text-[10.5px] font-medium leading-[13px] text-chalk">
+                        <span className="text-[10.5px] font-medium leading-[13px] text-cream">
                           {strength.title}
                         </span>
                       </div>
 
-                      <p className="mt-1.5 text-[9px] leading-[12.5px] text-mist/70">
+                      <p className="mt-1.5 text-[9px] leading-[12.5px] text-cream-3">
                         {strength.description}
                       </p>
                     </div>
@@ -560,10 +569,10 @@ export default function ResumeSheet() {
         {/* ============ Footer ============ */}
         <motion.footer
           {...rise(0.28)}
-          className="mt-[16px] flex h-[44px] shrink-0 items-center justify-between border-t border-line font-mono text-[9px] uppercase tracking-[0.2em] text-dim"
+          className="mt-[16px] flex h-[44px] shrink-0 items-center justify-between border-t border-line font-mono text-[9px] uppercase tracking-[0.2em] text-cream-3"
         >
           <div className="flex items-center gap-3">
-            <span className="text-[10px] font-semibold tracking-[0.3em] text-mist">
+            <span className="text-[10px] font-semibold tracking-[0.3em] text-cream-2">
               AASN
             </span>
 
@@ -578,9 +587,7 @@ export default function ResumeSheet() {
               <span
                 key={index}
                 className={`w-px ${
-                  index % 6 === 0
-                    ? "h-[9px] bg-cyan/40"
-                    : "h-[4px] bg-white/[0.09]"
+                  index % 6 === 0 ? "h-[9px] bg-sepia" : "h-[4px] bg-cream/10"
                 }`}
               />
             ))}
@@ -589,7 +596,7 @@ export default function ResumeSheet() {
           <div className="flex items-center gap-4">
             <a
               href={`mailto:${profile.email}`}
-              className="transition-colors duration-300 hover:text-cyan"
+              className="transition-colors duration-300 hover:text-sepia"
             >
               {profile.email}
             </a>

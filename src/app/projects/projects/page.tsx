@@ -14,20 +14,20 @@ export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen">
       {/* Nav */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-line/80 bg-void/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-line/80 bg-ink/85 backdrop-blur-xl">
+        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-mist transition-colors hover:text-chalk"
+            className="group inline-flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream-2 transition-colors hover:text-cream"
           >
             <ArrowLeft
-              size={14}
-              className="text-cyan transition-transform duration-300 group-hover:-translate-x-1"
+              size={13}
+              className="text-sepia transition-transform duration-300 group-hover:-translate-x-1"
             />
             Back to base
           </Link>
 
-          <span className="label text-dim">
+          <span className="label text-cream-3">
             {String(projects.length).padStart(2, "0")} builds
           </span>
         </div>
@@ -36,21 +36,19 @@ export default function ProjectsPage() {
       {/* Hero */}
       <section className="relative overflow-hidden pb-20 pt-40">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-0 h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-cyan/[0.07] blur-[150px]" />
+          <div className="absolute left-1/2 top-0 h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-sepia/[0.13] blur-[150px]" />
 
           <div className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(100%_70%_at_50%_0%,#000,transparent_75%)]" />
-
-          <div className="grid-floor" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-          <p className="label text-cyan/70">{"// Archive"}</p>
+        <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+          <p className="label">{"// Archive"}</p>
 
-          <h1 className="mt-6 font-display text-[clamp(2.6rem,8vw,5rem)] font-bold leading-[0.95] tracking-[-0.04em]">
-            <span className="chrome-text">All projects.</span>
+          <h1 className="mt-6 font-display text-[clamp(2.6rem,8vw,5rem)] font-semibold leading-[0.94] tracking-[-0.03em]">
+            <span className="text-sepia">All projects.</span>
           </h1>
 
-          <p className="mt-8 max-w-2xl text-base leading-8 text-mist/80">
+          <p className="mt-8 max-w-2xl text-[15px] leading-8 text-cream-3">
             A collection of projects I&apos;ve built while exploring
             full-stack development, backend engineering, computer vision and
             modern web technologies.
@@ -59,14 +57,14 @@ export default function ProjectsPage() {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="notch-sm inline-flex items-center gap-2 border border-cyan/45 bg-cyan/10 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-all duration-300 hover:border-cyan hover:bg-cyan/20"
+              className="inline-flex items-center gap-2 border border-cream/35 px-6 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream transition-all duration-300 hover:border-cream hover:bg-cream hover:text-ink"
             >
               Start a project
             </a>
 
             <Link
               href="/resume"
-              className="notch-sm inline-flex items-center gap-2 border border-line px-5 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-all duration-300 hover:border-cyan/45 hover:text-chalk"
+              className="inline-flex items-center gap-2 border border-line px-6 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.2em] text-cream-2 transition-colors duration-300 hover:border-cream/45 hover:text-cream"
             >
               One-screen résumé
             </Link>
@@ -76,7 +74,7 @@ export default function ProjectsPage() {
 
       {/* Grid */}
       <section className="pb-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <div className="grid gap-6 md:grid-cols-2">
             {projects.map((project, index) => (
               <motion.div
