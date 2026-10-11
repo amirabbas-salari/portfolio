@@ -2,12 +2,28 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import PersonSchema from "@/components/seo/PersonSchema";
+import Backdrop from "@/components/ui/Backdrop";
+import PosterFrame from "@/components/ui/PosterFrame";
 
-import { Inter } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -84,8 +100,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} bg-ink font-sans text-cream-2 antialiased`}
+      >
         <PersonSchema />
+
+        <PosterFrame />
+
+        <Backdrop />
 
         {children}
       </body>

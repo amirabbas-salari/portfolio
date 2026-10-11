@@ -5,44 +5,61 @@ import { Mail } from "lucide-react";
 
 import { profile } from "@/data/profile";
 
+const links = [
+  ...(profile.github
+    ? [
+        {
+          href: profile.github,
+          label: "GitHub",
+          icon: <FaGithub size={14} />,
+          external: true,
+        },
+      ]
+    : []),
+  {
+    href: profile.linkedin,
+    label: "LinkedIn",
+    icon: <FaLinkedin size={14} />,
+    external: true,
+  },
+  {
+    href: `mailto:${profile.email}`,
+    label: "Email",
+    icon: <Mail size={14} />,
+    external: false,
+  },
+];
+
 export default function SocialRail() {
   return (
-    <aside className="fixed left-5 top-0 z-40 hidden h-screen w-6 flex-col items-center lg:flex">
-      {/* Vertical line */}
-      <div className="h-28 w-px bg-zinc-600" />
+    <aside className="fixed left-7 top-0 z-30 hidden h-screen w-6 flex-col items-center 2xl:flex">
+      <span className="h-32 w-px bg-line" />
 
-      {/* Icons */}
-      <div className="mt-3 flex flex-col items-center gap-4">
-        {profile.github && (
+      <div className="mt-5 flex flex-col items-center gap-5">
+        {links.map((link) => (
           <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="text-zinc-500 transition-colors hover:text-white"
+            key={link.label}
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            aria-label={link.label}
+            className="group relative flex h-8 w-8 items-center justify-center text-cream-3 transition-colors duration-300 hover:text-sepia"
           >
-            <FaGithub size={15} />
+            {link.icon}
+
+            <span className="absolute -left-[7px] top-1/2 h-8 w-px -translate-y-1/2 bg-transparent transition-colors duration-300 group-hover:bg-cream/40" />
           </a>
-        )}
-
-        <a
-          href={profile.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn"
-          className="text-zinc-500 transition-colors hover:text-white"
-        >
-          <FaLinkedin size={15} />
-        </a>
-
-        <a
-          href={`mailto:${profile.email}`}
-          aria-label="Email"
-          className="text-zinc-500 transition-colors hover:text-white"
-        >
-          <Mail size={15} />
-        </a>
+        ))}
       </div>
+
+      <span className="mt-5 h-28 w-px bg-line" />
+
+      <span
+        className="label mt-7 text-cream-3"
+        style={{ writingMode: "vertical-rl" }}
+      >
+        {profile.shortName} · {new Date().getFullYear()}
+      </span>
     </aside>
   );
 }

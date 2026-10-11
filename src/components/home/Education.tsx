@@ -1,131 +1,131 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { BookOpen, Globe2, MapPin } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 import { education } from "@/data/education";
+import { experiences } from "@/data/experience";
 
-const languages = [
-  {
-    name: "Persian",
-    level: "Native",
-  },
-  {
-    name: "English",
-    level: "Professional Working Proficiency",
-  },
-  {
-    name: "Turkish",
-    level: "Conversational",
-  },
+const timeline = [
+  ...education.map((item) => ({
+    period: item.period,
+    role: item.degree,
+    organization: item.institution,
+    detail:
+      "Coursework and projects across Artificial Intelligence, Computer Vision and Software Engineering.",
+    tag: "Education",
+  })),
+  ...experiences.map((item) => ({
+    period: item.period,
+    role: item.role,
+    organization: item.organization,
+    detail: item.detail,
+    tag: "Experience",
+  })),
+];
+
+const fields = [
+  "Artificial Intelligence",
+  "Computer Vision",
+  "Software Engineering",
 ];
 
 export default function Education() {
   return (
     <section
       id="education"
-      className="relative border-t border-zinc-600/60 py-24 sm:py-28"
+      className="relative border-t border-line/70 py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        {/* Main heading */}
-        <div className="section-title flex items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            <span className="text-violet-400">#</span>
-            education
-          </h2>
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <Reveal>
+          <SectionHeading
+            kicker="Experience & Education"
+            title={
+              <>
+                My
+                <br />
+                Timeline
+              </>
+            }
+            aside={
+              <span className="label">
+                {`// ${timeline.length} milestones`}
+              </span>
+            }
+          />
+        </Reveal>
 
-          <div className="ml-8 hidden h-px w-40 bg-zinc-600/70 sm:block" />
-        </div>
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.45fr_0.55fr] lg:gap-14">
+          {/* Timeline */}
+          <ol>
+            {timeline.map((item, index) => (
+              <Reveal key={`${item.role}-${item.period}`} delay={index * 0.05}>
+                <li className="grid gap-3 border-t border-line/70 py-7 sm:grid-cols-[150px_1fr] sm:gap-8">
+                  <div>
+                    <span className="flex items-center gap-2.5">
+                      <span className="h-1 w-1 bg-sepia" />
 
-        <div className="mt-12 grid gap-16 lg:grid-cols-2">
-          {/* Education */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {education.map((item) => (
-              <article
-                key={item.degree}
-                className="border border-zinc-500 bg-[#282c33]"
-              >
-                {/* Header */}
-                <div className="flex items-start justify-between gap-5 border-b border-zinc-500 px-5 py-4">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-violet-400/60 text-violet-400">
-                      <BookOpen size={16} />
-                    </div>
+                      <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-sepia">
+                        {item.period}
+                      </span>
+                    </span>
 
-                    <div>
-                      <h3 className="text-sm font-bold text-white">
-                        {item.degree}
-                      </h3>
-
-                      <p className="mt-1 text-xs text-zinc-500">
-                        {item.institution}
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="shrink-0 text-[10px] text-zinc-600">
-                    {item.period}
-                  </span>
-                </div>
-
-                {/* Details */}
-                <div className="flex flex-wrap gap-5 px-5 py-4 text-xs text-zinc-500">
-                  <span className="flex items-center gap-2">
-                    <MapPin size={13} />
-                    {item.location}
-                  </span>
-                </div>
-              </article>
-            ))}
-          </motion.div>
-
-          {/* Languages */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h3 className="mb-5 text-sm font-bold text-white">
-              Languages
-            </h3>
-
-            <div className="grid gap-3">
-              {languages.map((language, index) => (
-                <motion.div
-                  key={language.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.35,
-                    delay: index * 0.08,
-                  }}
-                  className="flex items-center justify-between border border-zinc-500 bg-[#282c33] px-5 py-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <Globe2
-                      size={15}
-                      className="text-violet-400"
-                    />
-
-                    <span className="text-xs font-medium text-white">
-                      {language.name}
+                    <span className="label mt-3 block text-cream-3">
+                      {item.tag}
                     </span>
                   </div>
 
-                  <span className="text-[10px] text-zinc-500">
-                    {language.level}
-                  </span>
-                </motion.div>
-              ))}
+                  <div>
+                    <h3 className="font-display text-xl font-semibold leading-snug tracking-[-0.01em] text-cream sm:text-[22px]">
+                      {item.role}
+                    </h3>
+
+                    <p className="mt-2.5 text-sm text-cream-2">
+                      {item.organization}
+                    </p>
+
+                    <p className="mt-3 text-[13.5px] leading-7 text-cream-3">
+                      {item.detail}
+                    </p>
+                  </div>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+
+          {/* Statement panel — “Small steps / Big progress” */}
+          <Reveal delay={0.1}>
+            <div className="relative flex h-full flex-col justify-between border border-line bg-ink-2/50 p-8">
+              <div className="tech-grid pointer-events-none absolute inset-0 opacity-40" />
+
+              <div className="relative">
+                <p className="label">{"// Field"}</p>
+
+                <p className="mt-8 font-display text-[34px] font-semibold leading-[1.02] tracking-[-0.02em] text-cream-3">
+                  Small steps
+                </p>
+
+                <p className="mt-1 font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.02em] text-cream">
+                  Big progress
+                </p>
+              </div>
+
+              <div className="relative mt-12">
+                {fields.map((area) => (
+                  <div
+                    key={area}
+                    className="flex items-center gap-3 border-t border-line/70 py-3.5"
+                  >
+                    <span className="h-1 w-1 bg-sepia" />
+
+                    <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-cream-2">
+                      {area}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

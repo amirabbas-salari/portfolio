@@ -13,21 +13,21 @@ import Contact from "@/components/home/Contact";
 
 export default function Home() {
   return (
-    <main className="bg-[#050505]">
+    <main className="relative">
       <Navbar />
       <SocialRail />
 
       <Hero />
 
+      <Projects />
+
       <About />
 
       <Skills />
 
-      <Projects />
+      <Education />
 
       <Certifications />
-
-      <Education />
 
       <Strengths />
 

@@ -1,179 +1,163 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 import { profile } from "@/data/profile";
 
 export default function Contact() {
+  const channels = [
+    {
+      label: "Email",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
+      icon: Mail,
+    },
+    ...(profile.github
+      ? [
+          {
+            label: "GitHub",
+            value: "github.com/amirabbas-salari",
+            href: profile.github,
+            icon: FaGithub,
+          },
+        ]
+      : []),
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/amirabbas-salari",
+      href: profile.linkedin,
+      icon: FaLinkedin,
+    },
+    {
+      label: "Phone",
+      value: profile.phone,
+      href: `tel:${profile.phone.replace(/\s/g, "")}`,
+      icon: Phone,
+    },
+    {
+      label: "Base",
+      value: profile.location,
+      href: undefined,
+      icon: MapPin,
+    },
+  ];
+
   return (
-    <section
-      id="contact"
-      className="relative border-t border-zinc-600/60 py-24 sm:py-28"
-    >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+    <section id="contact" className="relative py-24 sm:py-28">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <Reveal>
+          {/* Knockout paper panel */}
+          <div className="paper paper-edge relative overflow-hidden">
+            <div className="halftone pointer-events-none absolute inset-0 opacity-25" />
 
-        {/* Heading */}
-        <div className="flex items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            <span className="text-violet-400">#</span>
-            contact
-          </h2>
+            <div className="relative px-6 py-14 sm:px-10 lg:px-14">
+              <SectionHeading
+                tone="paper"
+                kicker="Get In Touch"
+                title={
+                  <>
+                    Let&apos;s
+                    <br />
+                    Connect
+                  </>
+                }
+                aside={
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="group inline-flex items-center gap-2 border-b border-ink/40 pb-1 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-[#6b5335] hover:text-[#6b5335]"
+                  >
+                    Say Hello
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
+                }
+              />
 
-          <div className="ml-8 hidden h-px flex-1 bg-zinc-600/70 sm:block" />
-        </div>
-
-
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_380px]">
-
-          {/* Text */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -20,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-          >
-            <h3 className="max-w-xl text-3xl font-bold leading-tight text-white sm:text-4xl">
-              Let&apos;s work together and build something useful.
-            </h3>
-
-
-            <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-500">
-              Whether you have a project idea, collaboration opportunity,
-              or simply want to connect, feel free to reach out.
-            </p>
-
-
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-8 inline-flex items-center border border-violet-400 px-6 py-3 text-xs font-medium text-white transition-colors hover:bg-violet-400/10"
-            >
-              Send message
-            </a>
-
-
-            {/* Decorative */}
-            <div className="relative mt-14 hidden h-24 lg:block">
-              <div className="dots absolute left-0 top-0 h-20 w-20" />
-
-              <div className="absolute left-32 top-8 h-px w-40 bg-violet-400/50" />
-            </div>
-
-          </motion.div>
-
-
-          {/* Contact info */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0.1,
-            }}
-            className="border border-zinc-500 bg-[#282c33]"
-          >
-
-            <div className="border-b border-zinc-500 px-5 py-4">
-              <h3 className="text-sm font-bold text-white">
-                Contact information
-              </h3>
-            </div>
-
-
-            <div className="divide-y divide-zinc-600">
-
-              <a
-                href={`mailto:${profile.email}`}
-                className="flex gap-4 px-5 py-5 transition-colors hover:bg-white/[0.03]"
-              >
-                <Mail
-                  size={17}
-                  className="mt-1 text-violet-400"
-                />
-
+              <div className="mt-12 grid gap-12 lg:grid-cols-[0.95fr_1.55fr] lg:gap-14">
                 <div>
-                  <p className="text-xs text-zinc-600">
-                    Email
+                  <p className="text-[15px] leading-8 text-ink/75">
+                    Whether you have a project idea, a collaboration
+                    opportunity, or simply want to connect — my inbox is open.
+                    I reply fast and I like hard problems.
                   </p>
 
-                  <p className="mt-1 break-all text-sm text-zinc-300">
-                    {profile.email}
-                  </p>
-                </div>
-              </a>
-
-
-
-              <a
-                href={`tel:${profile.phone.replace(/\s/g, "")}`}
-                className="flex gap-4 px-5 py-5 transition-colors hover:bg-white/[0.03]"
-              >
-                <Phone
-                  size={17}
-                  className="mt-1 text-violet-400"
-                />
-
-                <div>
-                  <p className="text-xs text-zinc-600">
-                    Phone
+                  <p className="mt-10 font-display text-[26px] font-semibold leading-tight tracking-[-0.02em] text-ink">
+                    Open for new
+                    <br />
+                    opportunities
                   </p>
 
-                  <p className="mt-1 text-sm text-zinc-300">
-                    {profile.phone}
-                  </p>
-                </div>
-              </a>
-
-
-
-              <div className="flex gap-4 px-5 py-5">
-
-                <MapPin
-                  size={17}
-                  className="mt-1 text-violet-400"
-                />
-
-                <div>
-                  <p className="text-xs text-zinc-600">
-                    Location
-                  </p>
-
-                  <p className="mt-1 text-sm text-zinc-300">
-                    {profile.location}
-                  </p>
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="group mt-8 inline-flex items-center gap-2 border border-ink/30 px-6 py-3.5 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink transition-all duration-300 hover:bg-ink hover:text-cream"
+                  >
+                    Start a project
+                    <ArrowUpRight
+                      size={13}
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
+                  </a>
                 </div>
 
+                <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+                  {channels.map((channel) => {
+                    const Icon = channel.icon;
+
+                    const inner = (
+                      <>
+                        <span className="label label-paper shrink-0">
+                          {`// ${channel.label}`}
+                        </span>
+
+                        <span className="mt-2.5 break-all text-[15px] leading-6 text-ink">
+                          {channel.value}
+                        </span>
+
+                        <Icon
+                          size={13}
+                          className="mt-3 shrink-0 text-[#6b5335]"
+                        />
+                      </>
+                    );
+
+                    const shared =
+                      "group flex flex-col border-t border-ink/25 pt-4 transition-opacity duration-300 hover:opacity-70";
+
+                    return channel.href ? (
+                      <a
+                        key={channel.label}
+                        href={channel.href}
+                        target={
+                          channel.href.startsWith("http")
+                            ? "_blank"
+                            : undefined
+                        }
+                        rel={
+                          channel.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className={shared}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div key={channel.label} className={shared}>
+                        {inner}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-
             </div>
-
-          </motion.div>
-
-        </div>
-
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -2,20 +2,20 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
 import { ArrowUpRight, X } from "lucide-react";
-import {
-  AnimatePresence,
-  motion,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import type { Certification } from "@/data/certifications";
 
 interface CertificationCardProps {
   certification: Certification;
+  index: number;
 }
 
 export default function CertificationCard({
   certification,
+  index,
 }: CertificationCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,17 +33,11 @@ export default function CertificationCard({
       }
     };
 
-    window.addEventListener(
-      "keydown",
-      handleKeyDown,
-    );
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown,
-      );
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
@@ -52,13 +46,13 @@ export default function CertificationCard({
       <motion.article
         whileHover={{ y: -3 }}
         transition={{ duration: 0.2 }}
-        className="group overflow-hidden border border-zinc-500 bg-[#282c33] transition-colors hover:border-violet-400/70"
+        className="group relative overflow-hidden border border-line bg-ink-2/40"
       >
         {/* Image */}
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="relative block w-full overflow-hidden bg-zinc-900"
+          className="relative block w-full overflow-hidden bg-ink-2"
           aria-label={`View ${certification.title} certificate`}
         >
           <Image
@@ -70,22 +64,26 @@ export default function CertificationCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
 
-          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/40" />
+          <div className="absolute inset-0 bg-ink/0 transition-colors duration-300 group-hover:bg-ink/40" />
 
-          <span className="absolute bottom-3 right-3 flex items-center gap-2 border border-white/20 bg-[#282c33]/90 px-3 py-2 text-[10px] text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-            View
+          <span className="label absolute left-4 top-4 bg-ink/70 px-3 py-2 backdrop-blur-sm">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <span className="absolute bottom-4 right-4 flex items-center gap-2 border border-cream/25 bg-ink/80 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-cream opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+            Inspect
             <ArrowUpRight size={12} />
           </span>
         </button>
 
         {/* Content */}
-        <div className="flex items-start justify-between gap-4 border-t border-zinc-500 p-4">
+        <div className="flex items-start justify-between gap-4 border-t border-line/70 p-5">
           <div>
-            <h3 className="text-xs font-bold leading-5 text-white">
+            <h3 className="font-display text-[15px] font-semibold leading-snug tracking-[-0.01em] text-cream transition-colors duration-300 group-hover:text-sepia">
               {certification.title}
             </h3>
 
-            <p className="mt-1 text-[10px] text-zinc-500">
+            <p className="label mt-2.5 text-cream-3">
               {certification.issuer}
             </p>
           </div>
@@ -93,51 +91,40 @@ export default function CertificationCard({
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="flex h-7 w-7 shrink-0 items-center justify-center border border-zinc-500 text-zinc-500 transition-colors hover:border-violet-400 hover:text-violet-400"
+            className="flex h-8 w-8 shrink-0 items-center justify-center border border-line text-cream-3 transition-colors duration-300 hover:border-cream/50 hover:text-cream"
             aria-label={`Open ${certification.title}`}
           >
-            <ArrowUpRight size={12} />
+            <ArrowUpRight size={13} />
           </button>
         </div>
       </motion.article>
 
       {/* Lightbox */}
       <AnimatePresence>
-        {isOpen && (
+        {isOpen ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-5 backdrop-blur-sm sm:p-10"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-ink/95 p-5 backdrop-blur-md sm:p-10"
             onClick={() => setIsOpen(false)}
           >
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center border border-zinc-500 bg-[#282c33] text-zinc-400 transition-colors hover:border-violet-400 hover:text-white"
+              className="absolute right-5 top-5 z-20 flex h-11 w-11 items-center justify-center border border-line bg-ink-2 text-cream-2 transition-colors hover:border-cream/50 hover:text-cream"
               aria-label="Close certificate"
             >
               <X size={18} />
             </button>
 
             <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.96,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.96,
-              }}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.2 }}
-              className="relative max-h-[90vh] max-w-6xl overflow-hidden border border-zinc-500 bg-zinc-950"
-              onClick={(event) =>
-                event.stopPropagation()
-              }
+              className="relative max-h-[90vh] max-w-6xl border border-cream/20 bg-ink-2"
+              onClick={(event) => event.stopPropagation()}
             >
               <Image
                 src={certification.image}
@@ -148,7 +135,7 @@ export default function CertificationCard({
               />
             </motion.div>
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
     </>
   );
