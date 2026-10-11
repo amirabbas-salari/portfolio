@@ -199,6 +199,107 @@ body {
 }
 
 /* ==================================================================
+   Motion instruments (home page widgets)
+   ================================================================== */
+
+/* Infinite ticker band */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-track-slow {
+  animation-duration: 52s;
+  animation-direction: reverse;
+}
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+/* Typing caret */
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s steps(1, end) infinite;
+}
+
+/* Pulse travelling along an SVG edge (pathLength = 1) */
+@keyframes edge-pulse {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.edge-pulse {
+  animation: edge-pulse 2.6s linear infinite;
+}
+
+/* Network node */
+@keyframes node-blink {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.node-blink {
+  animation: node-blink 3s ease-in-out infinite;
+}
+
+/* Gaze scanner sweep */
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(124px);
+  }
+}
+.scan-sweep {
+  animation: scan-sweep 3.4s ease-in-out infinite alternate;
+}
+
+/* Status dot */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.soft-pulse {
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
+
+/* ==================================================================
    Motion
    ================================================================== */
 @keyframes drift {
@@ -252,7 +353,13 @@ body {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .drift {
+  .drift,
+  .marquee-track,
+  .edge-pulse,
+  .node-blink,
+  .scan-sweep,
+  .soft-pulse,
+  .caret {
     animation: none;
   }
 }

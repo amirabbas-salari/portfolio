@@ -62,8 +62,10 @@ export default function Skills() {
                           {category.skills.map((skill) => (
                             <li
                               key={skill}
-                              className="text-[13px] leading-6 text-ink/70"
+                              className="group/skill flex items-center gap-2 text-[13px] leading-6 text-ink/70 transition-colors duration-200 hover:text-ink"
                             >
+                              <span className="h-[3px] w-[3px] shrink-0 bg-[#6b5335] opacity-0 transition-opacity duration-200 group-hover/skill:opacity-100" />
+
                               {skill}
                             </li>
                           ))}

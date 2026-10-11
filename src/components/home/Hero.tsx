@@ -6,21 +6,17 @@ import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
+import CountUp from "@/components/ui/CountUp";
+
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { skillCategories } from "@/data/skills";
 import { certifications } from "@/data/certifications";
 
 const stats = [
-  { value: String(projects.length).padStart(2, "0"), label: "Builds shipped" },
-  {
-    value: String(skillCategories.length).padStart(2, "0"),
-    label: "Skill domains",
-  },
-  {
-    value: String(certifications.length).padStart(2, "0"),
-    label: "Certifications",
-  },
+  { value: projects.length, label: "Builds shipped" },
+  { value: skillCategories.length, label: "Skill domains" },
+  { value: certifications.length, label: "Certifications" },
 ];
 
 /** Typographic word stack, straight off the poster. */
@@ -132,7 +128,7 @@ export default function Hero() {
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-display text-3xl font-semibold tracking-tight text-cream">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </p>
 
                   <p className="label mt-2.5 text-cream-3">{stat.label}</p>
