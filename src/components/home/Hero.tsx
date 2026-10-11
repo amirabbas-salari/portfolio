@@ -2,62 +2,98 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+
+import { ArrowRight, MapPin } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import { profile } from "@/data/profile";
+import { projects } from "@/data/projects";
+import { skillCategories } from "@/data/skills";
+import { certifications } from "@/data/certifications";
+
+const stats = [
+  { value: String(projects.length).padStart(2, "0"), label: "Builds shipped" },
+  { value: String(skillCategories.length).padStart(2, "0"), label: "Skill domains" },
+  { value: String(certifications.length).padStart(2, "0"), label: "Certifications" },
+];
 
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+
+  const rise = (delay: number) => ({
+    initial: { opacity: 0, y: reduceMotion ? 0 : 22 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, delay, ease: "easeOut" as const },
+  });
+
   return (
     <section
       id="home"
-      className="relative min-h-[680px] overflow-hidden pt-28 sm:min-h-[720px]"
+      className="relative overflow-hidden pb-28 pt-32 sm:pt-36 lg:pb-32"
     >
-      {/* Decorative vertical line */}
-      <div className="pointer-events-none absolute left-5 top-0 hidden h-full w-px bg-zinc-600/70 lg:block" />
+      {/* Atmosphere */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-cyan/[0.07] blur-[150px]" />
 
-      {/* Left dots */}
-      <div className="dots pointer-events-none absolute left-0 top-[420px] hidden h-16 w-16 opacity-70 lg:block" />
+        <div className="absolute bottom-24 left-1/2 h-[300px] w-[760px] -translate-x-1/2 rounded-full bg-magenta/[0.07] blur-[140px]" />
 
-      {/* Background geometry */}
-      <div className="pointer-events-none absolute right-[18%] top-36 hidden h-24 w-24 border border-violet-400/70 lg:block" />
+        <div className="tech-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(100%_70%_at_50%_20%,#000,transparent_75%)]" />
 
-      <div className="pointer-events-none absolute right-[21%] top-48 hidden h-16 w-16 border border-violet-400/70 lg:block" />
+        <div className="scanlines absolute inset-0 opacity-30" />
 
-      <div className="pointer-events-none absolute right-[13%] top-64 hidden h-12 w-12 border border-zinc-500/60 lg:block" />
+        <div className="grid-floor" />
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="grid min-h-[590px] items-center gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-4">
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -25 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative z-10"
-          >
-            <p className="mb-5 text-xs uppercase tracking-[0.22em] text-zinc-600">
-              Full-Stack Developer
-            </p>
+        <div className="absolute inset-x-0 bottom-[26%] h-px bg-gradient-to-r from-transparent via-cyan/25 to-transparent" />
+      </div>
 
-            <h1 className="max-w-3xl text-3xl font-bold leading-[1.35] tracking-tight text-white sm:text-4xl lg:text-[42px]">
-              AmirAbbas Salari is a{" "}
-              <span className="text-violet-400">
-                Full-Stack Developer
-              </span>{" "}
-              and <span className="text-violet-400">AI Engineer</span>
-            </h1>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.08fr_0.92fr]">
+          {/* ------------------ Text ------------------ */}
+          <div className="relative z-10">
+            <motion.div {...rise(0.05)} className="flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan" />
+              </span>
 
-            <p className="mt-7 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">
-              I build modern web applications and intelligent systems
-              with Django, React, Python and Computer Vision.
-            </p>
+              <span className="label text-cyan/80">
+                Available for opportunities
+              </span>
 
-            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <span className="h-px w-10 bg-gradient-to-r from-cyan/50 to-transparent" />
+            </motion.div>
+
+            <motion.p {...rise(0.1)} className="label mt-8 text-dim">
+              {`// ${profile.role}`}
+            </motion.p>
+
+            <motion.h1
+              {...rise(0.15)}
+              className="mt-5 font-display text-[clamp(2.6rem,7vw,4.6rem)] font-bold leading-[0.95] tracking-[-0.035em]"
+            >
+              <span className="block text-chalk">Amir Abbas</span>
+
+              <span className="chrome-text block">Salari Nasab</span>
+            </motion.h1>
+
+            <motion.p
+              {...rise(0.22)}
+              className="mt-7 max-w-xl text-base leading-8 text-mist/80"
+            >
+              {profile.tagline} Turning complex problems into practical,
+              maintainable software — from real-time vision systems to
+              production APIs.
+            </motion.p>
+
+            <motion.div
+              {...rise(0.3)}
+              className="mt-10 flex flex-wrap items-center gap-3"
+            >
               <Link
                 href="#contact"
-                className="group inline-flex items-center gap-2 border border-violet-400 px-5 py-2.5 text-xs font-medium text-white transition-all duration-300 hover:bg-violet-400/10"
+                className="group notch-sm inline-flex items-center gap-2 border border-cyan/45 bg-cyan/10 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-all duration-300 hover:border-cyan hover:bg-cyan/20 hover:shadow-[0_0_34px_-8px_rgba(53,230,255,0.65)]"
               >
-                Contact me
+                Start a project
                 <ArrowRight
                   size={14}
                   className="transition-transform duration-300 group-hover:translate-x-1"
@@ -65,91 +101,105 @@ export default function Hero() {
               </Link>
 
               <Link
-                href="#projects"
-                className="inline-flex items-center gap-2 border border-zinc-600 px-5 py-2.5 text-xs text-zinc-400 transition-colors hover:border-zinc-400 hover:text-white"
+                href="/resume"
+                className="notch-sm inline-flex items-center gap-2 border border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-all duration-300 hover:border-cyan/45 hover:text-chalk"
               >
-                View projects
+                One-screen résumé
               </Link>
-            </div>
-          </motion.div>
 
-          {/* Profile */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative mx-auto h-[430px] w-full max-w-[470px]"
-          >
-            {/* Purple geometric shape */}
-            <div className="absolute left-[8%] top-[18%] h-20 w-20 border border-violet-400/80" />
+              <Link
+                href="#projects"
+                className="font-mono text-[11px] uppercase tracking-[0.2em] text-dim transition-colors duration-300 hover:text-chalk"
+              >
+                View builds
+              </Link>
+            </motion.div>
 
-            <div className="absolute left-[13%] top-[28%] h-14 w-14 border border-violet-400/70" />
-
-            {/* Dots */}
-            <div className="dots absolute right-[3%] top-[39%] h-20 w-20 opacity-80" />
-
-            {/* Image frame */}
-            <div className="absolute bottom-5 left-1/2 h-[390px] w-[300px] -translate-x-1/2 sm:w-[330px]">
-              <div className="absolute inset-x-0 bottom-0 h-px bg-violet-400/60" />
-
-              <Image
-                src="/images/profile/profile.jpg"
-                alt="Amir Abbas Salari Nasab"
-                fill
-                priority
-                className="object-contain object-bottom grayscale"
-                sizes="330px"
-              />
-            </div>
-
-            {/* Status card */}
-            <div className="absolute bottom-0 left-1/2 z-20 flex w-[280px] -translate-x-1/2 items-center gap-2 border border-zinc-500 bg-[#282c33] px-3 py-2 text-[10px] text-zinc-400 sm:w-[330px]">
-              <span className="h-2 w-2 shrink-0 bg-violet-400" />
-                <div>
-                  <p className="text-[9px] text-zinc-500 sm:text-xs">
-                    Currently focused on
+            {/* Stats */}
+            <motion.div
+              {...rise(0.38)}
+              className="mt-14 grid max-w-lg grid-cols-3 gap-4 border-t border-line/70 pt-8"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="chrome-text font-display text-3xl font-bold tracking-tight">
+                    {stat.value}
                   </p>
 
-                  <p className="mt-0.5 text-[11px] font-medium text-white sm:mt-1 sm:text-sm">
-                    AI & Computer Vision
-                  </p>
+                  <p className="label mt-2 text-dim">{stat.label}</p>
                 </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ------------------ Portrait ------------------ */}
+          <motion.div
+            {...rise(0.25)}
+            className="relative mx-auto w-full max-w-[420px]"
+          >
+            <div className="hud-lg relative p-2">
+              <div className="relative aspect-[4/5] overflow-hidden bg-panel">
+                <Image
+                  src={profile.image}
+                  alt={profile.name}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 420px"
+                  className="duotone object-cover object-top"
+                />
+
+                <span className="duotone-tint" />
+                <span className="duotone-tint-strong" />
+
+                <div className="scanlines absolute inset-0" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-void via-void/15 to-transparent" />
+
+                {/* Index badge */}
+                <span className="label absolute left-4 top-4 border border-cyan/30 bg-void/70 px-2.5 py-2 text-cyan/80 backdrop-blur-sm">
+                  Fig. 01 / {profile.shortName}
+                </span>
+
+                {/* Corner brackets */}
+                <span className="brackets absolute inset-0" />
+              </div>
+            </div>
+
+            {/* Readout panel */}
+            <div className="hud-sm relative mt-4 p-5">
+              <div className="flex items-center justify-between">
+                <p className="label text-cyan/70">[ Identity ]</p>
+
+                <span className="label text-dim">SYS · OK</span>
+              </div>
+
+              <div className="mt-4 space-y-3">
+                <div className="flex items-baseline justify-between gap-4 border-b border-line/60 pb-3">
+                  <span className="label text-dim">Role</span>
+                  <span className="text-right text-sm text-chalk">
+                    {profile.role}
+                  </span>
+                </div>
+
+                <div className="flex items-baseline justify-between gap-4 border-b border-line/60 pb-3">
+                  <span className="label text-dim">Focus</span>
+                  <span className="text-right text-sm text-chalk">
+                    Vision · LLM · Backend
+                  </span>
+                </div>
+
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="label text-dim">Base</span>
+                  <span className="flex items-center gap-2 text-sm text-chalk">
+                    <MapPin size={12} className="text-cyan/70" />
+                    {profile.location}
+                  </span>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom quote */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative mx-auto mt-5 max-w-5xl px-5 pb-20 sm:px-6"
-      >
-        <div className="relative border border-zinc-500 px-5 py-6 sm:px-7">
-          {/* Opening quote */}
-          <span className="absolute -left-1 -top-5 bg-[#282c33] px-2 text-4xl font-bold leading-none text-zinc-400">
-            “
-          </span>
-
-          <p className="text-center text-sm font-bold text-white sm:text-base">
-            With great power comes great electricity bill
-          </p>
-
-          {/* Author */}
-          <div className="absolute -bottom-10 right-0 border border-zinc-500 bg-[#282c33] px-5 py-2.5">
-            <span className="text-xs text-zinc-400">
-              - Dr. Who
-            </span>
-          </div>
-
-          {/* Closing quote */}
-          <span className="absolute -bottom-4 -right-1 bg-[#282c33] px-2 text-4xl font-bold leading-none text-zinc-400">
-            ”
-          </span>
-        </div>
-      </motion.div>
     </section>
   );
 }

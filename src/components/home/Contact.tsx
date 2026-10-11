@@ -1,179 +1,147 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
+
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 import { profile } from "@/data/profile";
+
+const channels = [
+  {
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    icon: Mail,
+  },
+  {
+    label: "Phone",
+    value: profile.phone,
+    href: `tel:${profile.phone.replace(/\s/g, "")}`,
+    icon: Phone,
+  },
+  {
+    label: "Base",
+    value: profile.location,
+    href: undefined,
+    icon: MapPin,
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/amirabbas-salari",
+    href: profile.linkedin,
+    icon: FaLinkedin,
+  },
+];
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative border-t border-zinc-600/60 py-24 sm:py-28"
+      className="relative border-t border-line/70 py-24 sm:py-28"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <Reveal>
+          <SectionHeading index="07" title="Contact" hint="// open channel" />
+        </Reveal>
 
-        {/* Heading */}
-        <div className="flex items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            <span className="text-violet-400">#</span>
-            contact
-          </h2>
-
-          <div className="ml-8 hidden h-px flex-1 bg-zinc-600/70 sm:block" />
-        </div>
-
-
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1fr_380px]">
-
-          {/* Text */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -20,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-          >
-            <h3 className="max-w-xl text-3xl font-bold leading-tight text-white sm:text-4xl">
-              Let&apos;s work together and build something useful.
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          {/* Pitch */}
+          <Reveal>
+            <h3 className="font-display text-3xl font-semibold leading-tight tracking-[-0.025em] text-chalk sm:text-4xl">
+              Let&apos;s build something
+              <br />
+              <span className="chrome-text">worth shipping.</span>
             </h3>
 
-
-            <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-500">
-              Whether you have a project idea, collaboration opportunity,
-              or simply want to connect, feel free to reach out.
+            <p className="mt-7 max-w-xl text-sm leading-8 text-mist/80">
+              Whether you have a project idea, a collaboration opportunity, or
+              simply want to connect — my inbox is open. I reply fast and I
+              like hard problems.
             </p>
 
-
-            <a
-              href={`mailto:${profile.email}`}
-              className="mt-8 inline-flex items-center border border-violet-400 px-6 py-3 text-xs font-medium text-white transition-colors hover:bg-violet-400/10"
-            >
-              Send message
-            </a>
-
-
-            {/* Decorative */}
-            <div className="relative mt-14 hidden h-24 lg:block">
-              <div className="dots absolute left-0 top-0 h-20 w-20" />
-
-              <div className="absolute left-32 top-8 h-px w-40 bg-violet-400/50" />
-            </div>
-
-          </motion.div>
-
-
-          {/* Contact info */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0.1,
-            }}
-            className="border border-zinc-500 bg-[#282c33]"
-          >
-
-            <div className="border-b border-zinc-500 px-5 py-4">
-              <h3 className="text-sm font-bold text-white">
-                Contact information
-              </h3>
-            </div>
-
-
-            <div className="divide-y divide-zinc-600">
-
+            <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
                 href={`mailto:${profile.email}`}
-                className="flex gap-4 px-5 py-5 transition-colors hover:bg-white/[0.03]"
+                className="group notch-sm inline-flex items-center gap-2 border border-cyan/45 bg-cyan/10 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-all duration-300 hover:border-cyan hover:bg-cyan/20 hover:shadow-[0_0_34px_-8px_rgba(53,230,255,0.65)]"
               >
-                <Mail
-                  size={17}
-                  className="mt-1 text-violet-400"
+                Send message
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 />
-
-                <div>
-                  <p className="text-xs text-zinc-600">
-                    Email
-                  </p>
-
-                  <p className="mt-1 break-all text-sm text-zinc-300">
-                    {profile.email}
-                  </p>
-                </div>
               </a>
-
-
 
               <a
-                href={`tel:${profile.phone.replace(/\s/g, "")}`}
-                className="flex gap-4 px-5 py-5 transition-colors hover:bg-white/[0.03]"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="notch-sm inline-flex items-center gap-2 border border-line px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-mist transition-all duration-300 hover:border-cyan/45 hover:text-chalk"
               >
-                <Phone
-                  size={17}
-                  className="mt-1 text-violet-400"
-                />
-
-                <div>
-                  <p className="text-xs text-zinc-600">
-                    Phone
-                  </p>
-
-                  <p className="mt-1 text-sm text-zinc-300">
-                    {profile.phone}
-                  </p>
-                </div>
+                <FaLinkedin size={13} />
+                LinkedIn
               </a>
+            </div>
+          </Reveal>
 
+          {/* Channels */}
+          <Reveal delay={0.1}>
+            <div className="hud hud-quiet relative p-7">
+              <div className="flex items-center justify-between">
+                <p className="label text-cyan/70">[ Channels ]</p>
 
-
-              <div className="flex gap-4 px-5 py-5">
-
-                <MapPin
-                  size={17}
-                  className="mt-1 text-violet-400"
-                />
-
-                <div>
-                  <p className="text-xs text-zinc-600">
-                    Location
-                  </p>
-
-                  <p className="mt-1 text-sm text-zinc-300">
-                    {profile.location}
-                  </p>
-                </div>
-
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-70" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
+                </span>
               </div>
 
+              <div className="mt-6 divide-y divide-line/60">
+                {channels.map((channel) => {
+                  const Icon = channel.icon;
+
+                  const inner = (
+                    <>
+                      <Icon size={14} className="shrink-0 text-cyan/70" />
+
+                      <span className="label w-[76px] shrink-0 text-dim">
+                        {channel.label}
+                      </span>
+
+                      <span className="truncate text-sm text-chalk">
+                        {channel.value}
+                      </span>
+                    </>
+                  );
+
+                  const shared =
+                    "group flex items-center gap-4 py-4 transition-colors duration-300 hover:text-cyan";
+
+                  return channel.href ? (
+                    <a
+                      key={channel.label}
+                      href={channel.href}
+                      target={channel.href.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        channel.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      className={shared}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div key={channel.label} className={shared}>
+                      {inner}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-
-          </motion.div>
-
+          </Reveal>
         </div>
-
       </div>
     </section>
   );

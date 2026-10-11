@@ -2,10 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ExternalLink,
-} from "lucide-react";
+
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 import type { Project } from "@/types";
@@ -15,91 +13,104 @@ interface ProjectCardProps {
   index: number;
 }
 
-export default function ProjectCard({
-  project,
-  index,
-}: ProjectCardProps) {
+export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-      }}
-      className="group overflow-hidden border border-zinc-500 bg-[#282c33] transition-colors duration-300 hover:border-violet-400/70"
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.5, delay: index * 0.07 }}
+      className="hud hud-quiet brackets group relative flex h-full flex-col overflow-hidden"
     >
-      {/* Image */}
+      {/* Media */}
       <Link
         href={`/projects/${project.slug}`}
-        className="block"
+        className="relative block aspect-[16/10] overflow-hidden bg-panel"
       >
-        <div className="relative aspect-[16/9] overflow-hidden border-b border-zinc-500 bg-zinc-900">
-          {project.image ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className="object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center">
-              <span className="text-xs text-zinc-600">
-                Project Preview
-              </span>
-            </div>
-          )}
-        </div>
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="duotone object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+          />
+        ) : (
+          <div className="tech-grid absolute inset-0 opacity-60" />
+        )}
+
+        <span className="duotone-tint" />
+
+        <div className="scanlines absolute inset-0" />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/10 to-transparent" />
+
+        {/* Index */}
+        <span className="label absolute left-4 top-4 border border-cyan/30 bg-void/70 px-2.5 py-2 text-cyan/80 backdrop-blur-sm">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Status */}
+        <span className="absolute right-4 top-4 flex items-center gap-2 border border-line bg-void/70 px-2.5 py-2 backdrop-blur-sm">
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              project.status === "Completed" ? "bg-mist" : "bg-magenta"
+            }`}
+          />
+
+          <span className="label text-mist/80">{project.status}</span>
+        </span>
       </Link>
 
-      {/* Technologies */}
-      <div className="border-b border-zinc-500 px-3 py-2">
-        <div className="flex flex-wrap gap-x-2 gap-y-1">
-          {project.technologies.slice(0, 5).map((technology) => (
-            <span
-              key={technology}
-              className="text-[10px] text-zinc-500"
-            >
-              {technology}
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Content */}
-      <div className="p-4">
-        <Link href={`/projects/${project.slug}`}>
-          <h3 className="text-base font-bold text-white transition-colors group-hover:text-violet-400">
-            {project.title}
-          </h3>
-        </Link>
+      <div className="flex flex-1 flex-col p-6">
+        <p className="label text-cyan/60">{project.subtitle}</p>
 
-        <p className="mt-3 min-h-[42px] text-xs leading-6 text-zinc-500">
+        <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-chalk transition-colors duration-300 group-hover:text-cyan">
+          {project.title}
+        </h3>
+
+        <p className="mt-4 text-[13px] leading-6 text-mist/70">
           {project.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        {/* Stack */}
+        <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+          {project.technologies.slice(0, 4).map((technology) => (
+            <span
+              key={technology}
+              className="font-mono text-[10px] tracking-wide text-dim"
+            >
+              {technology}
+              <span className="pl-3 text-line-bright">/</span>
+            </span>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-auto flex items-center justify-between gap-4 border-t border-line/60 pt-5">
           <Link
             href={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-2 border border-violet-400 px-3 py-1.5 text-[10px] text-white transition-colors hover:bg-violet-400/10"
+            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-chalk transition-colors hover:text-cyan"
           >
-            View
-            <ArrowRight size={12} />
+            Case study
+            <ArrowUpRight
+              size={13}
+              className="text-cyan transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
           </Link>
 
-          {project.liveUrl && (
+          {project.liveUrl ? (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-zinc-500 px-3 py-1.5 text-[10px] text-zinc-400 transition-colors hover:border-zinc-300 hover:text-white"
+              className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-dim transition-colors hover:text-cyan"
             >
               Live
-              <ExternalLink size={11} />
+              <ExternalLink size={12} />
             </a>
-          )}
+          ) : null}
         </div>
       </div>
     </motion.article>

@@ -1,22 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #282c33;
-  --foreground: #abb2bf;
+/* ==================================================================
+   Design tokens — dark retro-futuristic / cyber, restrained
+   ================================================================== */
+@theme {
+  /* Surfaces */
+  --color-void: #04050c;
+  --color-abyss: #070a15;
+  --color-panel: #0a0d1a;
+  --color-panel-2: #0f1425;
+  --color-line: #1c2440;
+  --color-line-bright: #2c3862;
 
-  --white: #f8f8f8;
-  --muted: #abb2bf;
-  --muted-dark: #7f8794;
+  /* Text */
+  --color-chalk: #edf1ff;
+  --color-mist: #a7b1d2;
+  --color-dim: #6d789e;
 
-  --purple: #c778dd;
-  --purple-dark: #a855c7;
+  /* Neon accents */
+  --color-cyan: #35e6ff;
+  --color-magenta: #ff3d9a;
+  --color-violet: #7c5cff;
 
-  --border: #4b5263;
-  --border-light: #6b7280;
+  /* Type */
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
 
-  --card: #282c33;
+  /* Notch size for HUD panels */
+  --hud-notch: 14px;
 }
 
+/* ==================================================================
+   Base
+   ================================================================== */
 * {
   box-sizing: border-box;
 }
@@ -27,10 +44,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-mono), monospace;
+  background: var(--color-void);
+  color: var(--color-mist);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -44,176 +62,273 @@ a {
 }
 
 ::selection {
-  background: rgba(199, 120, 221, 0.3);
-  color: white;
+  background: rgba(53, 230, 255, 0.28);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-cyan);
+  outline-offset: 3px;
 }
 
 /* Scrollbar */
-
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #282c33;
+  background: #05070f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5263;
+  background: #1b2340;
+  border: 2px solid #05070f;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #2c3862;
 }
 
-/* --------------------------------
-   Portfolio decorative utilities
---------------------------------- */
-
-.portfolio-grid {
+/* ==================================================================
+   HUD surfaces — notched panels with a neon hairline ring
+   ================================================================== */
+.hud {
+  --hud-notch: 14px;
   position: relative;
+  background:
+    linear-gradient(180deg, rgba(19, 25, 47, 0.72) 0%, rgba(7, 10, 21, 0.88) 100%);
+  clip-path: polygon(
+    var(--hud-notch) 0,
+    100% 0,
+    100% calc(100% - var(--hud-notch)),
+    calc(100% - var(--hud-notch)) 100%,
+    0 100%,
+    0 var(--hud-notch)
+  );
 }
 
-.portfolio-grid::before {
+.hud::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    140deg,
+    rgba(53, 230, 255, 0.42),
+    rgba(124, 92, 255, 0.14) 42%,
+    rgba(255, 61, 154, 0.34)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+/* Quiet variant for dense grids */
+.hud-quiet::before {
+  background: linear-gradient(
+    140deg,
+    rgba(53, 230, 255, 0.2),
+    rgba(28, 36, 64, 0.9) 45%,
+    rgba(255, 61, 154, 0.18)
+  );
+}
+
+/* Hover state */
+.hud-hover::before {
+  opacity: 0.55;
+}
+
+.hud-hover:hover::before {
+  opacity: 1;
+}
+
+/* Notch sizes */
+.hud-sm {
+  --hud-notch: 9px;
+}
+
+.hud-lg {
+  --hud-notch: 22px;
+}
+
+/* Notch helpers (standalone) */
+.notch {
+  clip-path: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+}
+
+.notch-lg {
+  clip-path: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
+}
+
+.notch-sm {
+  clip-path: polygon(
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%,
+    0 6px
+  );
+}
+
+/* Corner brackets */
+.brackets::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  --b: var(--bracket-color, rgba(53, 230, 255, 0.55));
+  background:
+    linear-gradient(var(--b), var(--b)) left top / 12px 1px no-repeat,
+    linear-gradient(var(--b), var(--b)) left top / 1px 12px no-repeat,
+    linear-gradient(var(--b), var(--b)) right bottom / 12px 1px no-repeat,
+    linear-gradient(var(--b), var(--b)) right bottom / 1px 12px no-repeat;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.group:hover .brackets::after,
+.brackets:hover::after {
+  opacity: 1;
+}
+
+/* ==================================================================
+   Typography effects
+   ================================================================== */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #dde4ff 32%,
+    #8fa2e8 54%,
+    #f3f6ff 74%,
+    #a6b4f3 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.neon-text {
+  color: var(--color-cyan);
+  text-shadow: 0 0 18px rgba(53, 230, 255, 0.45);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+}
+
+/* ==================================================================
+   Atmosphere
+   ================================================================== */
+.scanlines::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(
-      to right,
-      rgba(171, 178, 191, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(171, 178, 191, 0.035) 1px,
-      transparent 1px
-    );
-  background-size: 40px 40px;
-  mask-image: linear-gradient(
+  background: repeating-linear-gradient(
     to bottom,
-    black,
-    transparent 80%
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
   );
+  opacity: 0.55;
+  mix-blend-mode: overlay;
 }
 
-/* Section heading */
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.noise-layer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.section-title::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 1px;
-  background: var(--purple);
-  opacity: 0.8;
-}
-
-.section-title .hash {
-  color: var(--purple);
-}
-
-/* Dotted decoration */
-
-.dots {
-  background-image: radial-gradient(
-    circle,
-    rgba(171, 178, 191, 0.7) 1.2px,
-    transparent 1.2px
-  );
-  background-size: 9px 9px;
-}
-
-/* Purple geometric decoration */
-
-.geometry {
-  position: relative;
-}
-
-.geometry::before,
-.geometry::after {
-  content: "";
+/* Perspective floor grid — the retro-futurist signature */
+.grid-floor {
   position: absolute;
-  border: 1px solid var(--purple);
+  left: -30%;
+  right: -30%;
+  bottom: -10%;
+  height: 55%;
+  background-image:
+    linear-gradient(to right, rgba(53, 230, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(53, 230, 255, 0.3) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(340px) rotateX(64deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(to top, #000 0%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 72%);
+  opacity: 0.4;
   pointer-events: none;
 }
 
-.geometry::before {
-  width: 70px;
-  height: 70px;
+/* Flat technical grid used behind sections */
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-.geometry::after {
-  width: 42px;
-  height: 42px;
+/* Duotone treatment for imagery (filter on the image, tint as a layer) */
+.duotone {
+  filter: grayscale(1) contrast(1.06) brightness(0.82);
 }
 
-/* Buttons */
-
-.portfolio-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--purple);
-  padding: 8px 14px;
-  font-size: 12px;
-  color: white;
-  transition:
-    background-color 200ms ease,
-    color 200ms ease,
-    transform 200ms ease;
-}
-
-.portfolio-button:hover {
-  background: rgba(199, 120, 221, 0.12);
-}
-
-.portfolio-button:active {
-  transform: translateY(1px);
-}
-
-/* Thin portfolio borders */
-
-.portfolio-border {
-  border: 1px solid var(--border);
-}
-
-/* Focus */
-
-:focus-visible {
-  outline: 1px solid var(--purple);
-  outline-offset: 3px;
-}
-
-
-.dots {
-  background-image: radial-gradient(
-    circle,
-    rgb(161 161 170 / 0.65) 1px,
-    transparent 1px
+.duotone-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    145deg,
+    rgba(53, 230, 255, 0.55),
+    rgba(124, 92, 255, 0.3) 52%,
+    rgba(255, 61, 154, 0.5)
   );
-  background-size: 10px 10px;
+  mix-blend-mode: soft-light;
+  opacity: 0.85;
 }
 
-/* --------------------------------
-   One-screen résumé
---------------------------------- */
-
-.font-display {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+.duotone-tint-strong {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    145deg,
+    rgba(53, 230, 255, 0.45),
+    rgba(124, 92, 255, 0.22) 52%,
+    rgba(255, 61, 154, 0.4)
+  );
+  mix-blend-mode: color;
+  opacity: 0.35;
 }
 
-.font-editorial {
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
-}
-
-/* Film grain */
+/* ==================================================================
+   Résumé (kept from the one-screen sheet)
+   ================================================================== */
 .resume-grain::after {
   content: "";
   position: absolute;
@@ -223,7 +338,6 @@ a {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Fade the sheet in once its fit has been measured */
 .resume-fade {
   opacity: 0;
   transition: opacity 0.45s ease;
@@ -239,11 +353,48 @@ a {
   }
 }
 
-/* Printing the one-screen résumé */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(2.5%, 2%, 0) scale(1.06);
+    opacity: 1;
+  }
+}
+
+.drift {
+  animation: drift 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ==================================================================
+   Motion preferences
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .drift,
+  .animate-ping {
+    animation: none !important;
+  }
+
+  .resume-fade {
+    transition: none !important;
+  }
+}
+
+/* ==================================================================
+   Print — one-screen résumé
+   ================================================================== */
 @media print {
   html,
   body {
-    background: #08080a;
+    background: #04050c;
   }
 
   .resume-screen {
@@ -259,34 +410,5 @@ a {
   .resume-sheet-wrap {
     position: static !important;
     transform: none !important;
-  }
-}
-
-/* Slow ambient drift for the résumé glows */
-@keyframes resume-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.85;
-  }
-  50% {
-    transform: translate3d(2.5%, 2%, 0) scale(1.06);
-    opacity: 1;
-  }
-}
-
-.resume-drift {
-  animation: resume-drift 20s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .resume-drift,
-  .animate-ping {
-    animation: none !important;
-  }
-
-  .resume-fade {
-    transition: none !important;
   }
 }
