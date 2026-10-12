@@ -21,7 +21,7 @@ export const experiences: Experience[] = [
       "Supporting programming courses, assisting students with practical projects, and evaluating assignments in Python, Django, C#, and Object-Oriented Programming.",
   },
   {
-    period: "2024 — 2025",
+    period: "2024 — Present",
     role: "Backend Developer",
     organization: "Independent Projects",
     detail:
