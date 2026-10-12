@@ -1,98 +1,51 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Brain,
-  FileText,
-  Lightbulb,
-} from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 
-const strengths = [
-  {
-    number: "01",
-    title: "Problem Solving",
-    description:
-      "Develop efficient and practical solutions for complex technical challenges.",
-    icon: Brain,
-  },
-  {
-    number: "02",
-    title: "Fast Learner",
-    description:
-      "Quickly adapt to new technologies, frameworks, and development tools.",
-    icon: Lightbulb,
-  },
-  {
-    number: "03",
-    title: "Technical Documentation",
-    description:
-      "Create clear technical documentation, API references, and project guides to improve collaboration and maintainability.",
-    icon: FileText,
-  },
-];
+import { strengths } from "@/data/strengths";
 
 export default function Strengths() {
   return (
-    <section className="relative border-t border-zinc-600/60 py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <div className="section-title flex items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            <span className="text-violet-400">#</span>
-            strengths
-          </h2>
+    <section
+      id="strengths"
+      className="relative border-t border-line/70 py-24 sm:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <Reveal>
+          <SectionHeading
+            kicker="Strengths"
+            title="How I Work"
+            aside={<span className="label">{"// Operating mode"}</span>}
+          />
+        </Reveal>
 
-          <div className="ml-8 hidden h-px flex-1 bg-zinc-600/70 sm:block" />
-        </div>
-
-        {/* Cards */}
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+        <div className="mt-12 grid gap-px bg-line/70 md:grid-cols-3">
           {strengths.map((strength, index) => {
             const Icon = strength.icon;
 
             return (
-              <motion.article
-                key={strength.title}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.2,
-                }}
-                transition={{
-                  duration: 0.45,
-                  delay: index * 0.08,
-                }}
-                className="group border border-zinc-500 bg-[#282c33] transition-colors duration-300 hover:border-violet-400/70"
-              >
-                <div className="flex items-center justify-between border-b border-zinc-500 px-5 py-4">
-                  <span className="text-xs text-zinc-600">
-                    {strength.number}
-                  </span>
+              <Reveal key={strength.number} delay={index * 0.06}>
+                <article className="group relative h-full bg-ink p-8 transition-colors duration-300 hover:bg-ink-2">
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center border border-cream/20 text-sepia transition-colors duration-300 group-hover:border-cream/45">
+                      <Icon size={17} strokeWidth={1.7} />
+                    </span>
 
-                  <Icon
-                    size={17}
-                    strokeWidth={1.6}
-                    className="text-violet-400"
-                  />
-                </div>
+                    <span className="label text-cream-3">
+                      {strength.number}
+                    </span>
+                  </div>
 
-                <div className="p-5">
-                  <h3 className="text-sm font-bold text-white transition-colors group-hover:text-violet-400">
+                  <h3 className="mt-8 font-display text-[21px] font-semibold leading-snug tracking-[-0.015em] text-cream">
                     {strength.title}
                   </h3>
 
-                  <p className="mt-4 text-xs leading-6 text-zinc-500">
+                  <p className="mt-4 text-[13.5px] leading-7 text-cream-3">
                     {strength.description}
                   </p>
-                </div>
-              </motion.article>
+                </article>
+              </Reveal>
             );
           })}
         </div>
