@@ -8,21 +8,23 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     period: "2025 — Present",
-    role: "Full-Stack & AI Developer",
-    organization: "Independent / Self-directed",
+    role: "AI & Full-Stack Developer",
+    organization: "Independent Projects",
     detail:
-      "MovieVerse, Gaze Analytics, JARVIS and Persia Collector — end-to-end design, build and deployment.",
+      "Developing AI-powered applications, computer vision systems, and full-stack web solutions, including Gaze Analytics, JARVIS, and MovieVerse.",
   },
   {
     period: "2024 — Present",
-    role: "Teaching Assistant (TA)",
+    role: "Teaching Assistant",
     organization: "Shahid Bahonar University of Kerman",
-    detail: "Advanced Python, OOP and backend development with Django.",
+    detail:
+      "Supporting programming courses, assisting students with practical projects, and evaluating assignments in Python, Django, C#, and Object-Oriented Programming.",
   },
   {
     period: "2024 — 2025",
-    role: "Backend Developer (Intern)",
-    organization: "Web team",
-    detail: "Web projects and API development.",
+    role: "Backend Developer",
+    organization: "Independent Projects",
+    detail:
+      "Developing backend services and RESTful APIs using Python and Django for web applications, including a barber appointment booking system.",
   },
 ];
